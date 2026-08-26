@@ -1,16 +1,14 @@
 export PATH="$HOME/.pyenv/bin:$PATH"
 eval "$(pyenv init -)"
-typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
-typeset -g POWERLEVEL10K_INSTANT_PROMPT=quiet
-typeset -g POWERLEVEL9K_INSTANT_PROMPT=off
-# Enable Powerlevel10k instant prompt. Should stay close to the top.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
+
+# ---------- Simple Prompt ----------
+ZSH_THEME=""
+ZSH_THEME_GIT_PROMPT_PREFIX=""
+ZSH_THEME_GIT_PROMPT_SUFFIX=" "
+PROMPT='%F{blue}%~%f %F{green}$(git_prompt_info)%f> '
 
 # ---------- Oh My Zsh ----------
 export ZSH="$HOME/.oh-my-zsh"
-ZSH_THEME=""
 
 plugins=(
   git
@@ -19,9 +17,6 @@ plugins=(
 )
 
 source "$ZSH/oh-my-zsh.sh"
-
-# ---------- Prompt ----------
-[[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
 
 # ---------- Key bindings ----------
 bindkey '^[f' forward-word
