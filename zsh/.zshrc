@@ -1,12 +1,20 @@
 export PATH="$HOME/.pyenv/bin:$PATH"
 eval "$(pyenv init -)"
 
-# ---------- Simple Prompt ----------
-ZSH_THEME=""
-ZSH_THEME_GIT_PROMPT_PREFIX=""
-ZSH_THEME_GIT_PROMPT_SUFFIX=" "
-PROMPT='%F{blue}%~%f %F{green}$(git_prompt_info)%f> '
+# ---------- Prompt ----------
+autoload -Uz vcs_info
+autoload -Uz colors && colors
+setopt PROMPT_SUBST
 
+zstyle ':vcs_info:git:*' formats ' %F{8}on%f %F{magenta}󰊢 %b%f'
+zstyle ':vcs_info:git:*' actionformats ' %F{8}on%f %F{magenta}󰊢 %b%f %F{red}(%a)%f'
+zstyle ':vcs_info:*' enable git
+
+precmd() { vcs_info }
+
+PROMPT='%F{cyan}╭─%f %F{blue}%~%f${vcs_info_msg_0_}
+%F{cyan}╰─%f %(?.%F{green}.%F{red})❯%f '
+RPROMPT='%F{8}%*%f%(?.. %F{red}✘ %?%f)'
 # ---------- Oh My Zsh ----------
 export ZSH="$HOME/.oh-my-zsh"
 

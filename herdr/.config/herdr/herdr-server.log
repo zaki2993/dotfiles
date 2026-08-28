@@ -1,0 +1,367 @@
+2026-08-27T08:09:39.665370Z  INFO herdr::api::server: api server listening path=/home/zakarch/.config/herdr/herdr.sock
+2026-08-27T08:09:39.670214Z  INFO herdr::logging: spawning pane terminal event="pane.spawn.start" subsystem="pane" outcome="started" pane_id=1 rows=24 cols=80 scrollback_limit_bytes=10000000
+2026-08-27T08:09:39.672900Z  INFO herdr::logging: pane child spawned event="pane.spawned" subsystem="pane" outcome="ok" pane_id=1 pid=4093
+2026-08-27T08:09:39.673540Z  INFO herdr::logging: spawning pane terminal event="pane.spawn.start" subsystem="pane" outcome="started" pane_id=2 rows=24 cols=80 scrollback_limit_bytes=10000000
+2026-08-27T08:09:39.676214Z  INFO herdr::logging: pane child spawned event="pane.spawned" subsystem="pane" outcome="ok" pane_id=2 pid=4096
+2026-08-27T08:09:39.676840Z  INFO herdr::logging: spawning pane terminal event="pane.spawn.start" subsystem="pane" outcome="started" pane_id=3 rows=24 cols=80 scrollback_limit_bytes=10000000
+2026-08-27T08:09:39.679852Z  INFO herdr::logging: pane child spawned event="pane.spawned" subsystem="pane" outcome="ok" pane_id=3 pid=4100
+2026-08-27T08:09:39.680492Z  INFO herdr::logging: spawning pane terminal event="pane.spawn.start" subsystem="pane" outcome="started" pane_id=4 rows=24 cols=80 scrollback_limit_bytes=10000000
+2026-08-27T08:09:39.683421Z  INFO herdr::logging: pane child spawned event="pane.spawned" subsystem="pane" outcome="ok" pane_id=4 pid=4104
+2026-08-27T08:09:39.684326Z  INFO herdr::logging: spawning pane terminal event="pane.spawn.start" subsystem="pane" outcome="started" pane_id=5 rows=24 cols=80 scrollback_limit_bytes=10000000
+2026-08-27T08:09:39.687520Z  INFO herdr::logging: pane child spawned event="pane.spawned" subsystem="pane" outcome="ok" pane_id=5 pid=4108
+2026-08-27T08:09:39.688380Z  INFO herdr::logging: spawning pane terminal event="pane.spawn.start" subsystem="pane" outcome="started" pane_id=6 rows=24 cols=80 scrollback_limit_bytes=10000000
+2026-08-27T08:09:39.692231Z  INFO herdr::logging: pane child spawned event="pane.spawned" subsystem="pane" outcome="ok" pane_id=6 pid=4112
+2026-08-27T08:09:39.692980Z  INFO herdr::logging: session restore evaluated event="persist.restore" subsystem="persist" outcome="ok" workspaces=3
+2026-08-27T08:09:39.693031Z  INFO herdr::app: using pane scrollback configuration pane_scrollback_limit_bytes=10000000
+2026-08-27T08:09:39.816512Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-08-27T08:09:39.828049Z  INFO herdr::server::headless: restored session already has workspaces; ignoring startup cwd cwd=/home/zakarch
+2026-08-27T08:09:39.828342Z  INFO herdr::server::headless: client protocol socket listening path=/home/zakarch/.config/herdr/herdr-client.sock
+2026-08-27T08:09:39.828453Z  INFO herdr::server::headless: herdr server started api_socket=/home/zakarch/.config/herdr/herdr.sock client_socket=/home/zakarch/.config/herdr/herdr-client.sock
+2026-08-27T08:09:39.829201Z  INFO herdr::logging: herdr starting event="app.startup" subsystem="server" outcome="started" pid=4079
+2026-08-27T08:09:40.097835Z  INFO herdr::server::headless: client connected client_id=2 cols=183 rows=39 cell_width_px=0 cell_height_px=0 render_encoding=SemanticFrame
+2026-08-27T08:09:40.309108Z  WARN herdr::detect::manifest_update: skipping unknown remote manifest agent agent="qwen"
+2026-08-27T08:09:40.355153Z  INFO herdr::logging: update available event="update.available" subsystem="update" outcome="ok" version="0.8.2"
+2026-08-27T08:09:40.355210Z  INFO herdr::update: new stable build available at https://github.com/herdrdev/herdr/releases/download/v0.8.2/herdr-linux-x86_64
+2026-08-27T08:09:40.355660Z  INFO herdr::update: auto-update check: 0.8.2 available, waiting for explicit install
+2026-08-27T08:09:46.328946Z  INFO herdr::logging: workspace focused event="workspace.focus" subsystem="workspace" outcome="ok" workspace_id="wS"
+2026-08-27T08:09:46.329088Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wS" tab_id="wS:t6"
+2026-08-27T08:09:48.841101Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wS" tab_id="wS:t1"
+2026-08-27T08:09:53.843473Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/home/zakarch/.config/herdr/session.json workspaces=3
+2026-08-27T08:09:55.037383Z  INFO herdr::server::headless: client resize client_id=2 cols=167 rows=38 cell_width_px=0 cell_height_px=0
+2026-08-27T08:09:55.237801Z  INFO herdr::server::headless: client resize client_id=2 cols=153 rows=36 cell_width_px=0 cell_height_px=0
+2026-08-27T08:10:12.065906Z  INFO herdr::server::headless: client resize client_id=2 cols=153 rows=34 cell_width_px=0 cell_height_px=0
+2026-08-27T08:10:12.266298Z  INFO herdr::server::headless: client resize client_id=2 cols=141 rows=33 cell_width_px=0 cell_height_px=0
+2026-08-27T08:13:28.895148Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wS" tab_id="wS:t5"
+2026-08-27T08:13:30.683895Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wS" tab_id="wS:t6"
+2026-08-27T08:13:35.685847Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/home/zakarch/.config/herdr/session.json workspaces=3
+2026-08-27T08:25:11.212961Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wS" tab_id="wS:t1"
+2026-08-27T08:25:16.216745Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/home/zakarch/.config/herdr/session.json workspaces=3
+2026-08-27T08:26:23.906693Z  INFO herdr::server::headless: client resize client_id=2 cols=141 rows=31 cell_width_px=0 cell_height_px=0
+2026-08-27T08:26:24.207320Z  INFO herdr::server::headless: client resize client_id=2 cols=131 rows=29 cell_width_px=0 cell_height_px=0
+2026-08-27T08:33:28.481442Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wS" tab_id="wS:t4"
+2026-08-27T08:33:33.484197Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/home/zakarch/.config/herdr/session.json workspaces=3
+2026-08-27T08:33:47.119428Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wS" tab_id="wS:t1"
+2026-08-27T08:33:48.459159Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wS" tab_id="wS:t4"
+2026-08-27T08:33:53.462044Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/home/zakarch/.config/herdr/session.json workspaces=3
+2026-08-27T08:38:08.649899Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wS" tab_id="wS:t1"
+2026-08-27T08:38:13.653229Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/home/zakarch/.config/herdr/session.json workspaces=3
+2026-08-27T08:39:40.265196Z  WARN herdr::detect::manifest_update: skipping unknown remote manifest agent agent="qwen"
+2026-08-27T08:52:27.319486Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wS" tab_id="wS:t4"
+2026-08-27T08:52:32.323291Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/home/zakarch/.config/herdr/session.json workspaces=3
+2026-08-27T08:53:26.405945Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wS" tab_id="wS:t6"
+2026-08-27T08:53:31.410013Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/home/zakarch/.config/herdr/session.json workspaces=3
+2026-08-27T08:54:07.654735Z  INFO herdr::app::actions: copied selection to clipboard
+2026-08-27T08:54:10.376300Z  INFO herdr::app::actions: copied selection to clipboard
+2026-08-27T08:54:14.585297Z  INFO herdr::app::actions: copied selection to clipboard
+2026-08-27T08:57:16.295242Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wS" tab_id="wS:t1"
+2026-08-27T08:57:21.298054Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/home/zakarch/.config/herdr/session.json workspaces=3
+2026-08-27T09:02:55.335255Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wS" tab_id="wS:t4"
+2026-08-27T09:03:00.341131Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/home/zakarch/.config/herdr/session.json workspaces=3
+2026-08-27T09:04:55.785286Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wS" tab_id="wS:t1"
+2026-08-27T09:05:00.790969Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/home/zakarch/.config/herdr/session.json workspaces=3
+2026-08-27T09:07:36.141244Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wS" tab_id="wS:t6"
+2026-08-27T09:07:41.144153Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/home/zakarch/.config/herdr/session.json workspaces=3
+2026-08-27T09:09:40.327309Z  WARN herdr::detect::manifest_update: skipping unknown remote manifest agent agent="qwen"
+2026-08-27T09:11:03.915084Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wS" tab_id="wS:t1"
+2026-08-27T09:11:08.918325Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/home/zakarch/.config/herdr/session.json workspaces=3
+2026-08-27T09:11:45.222775Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wS" tab_id="wS:t4"
+2026-08-27T09:11:50.228827Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/home/zakarch/.config/herdr/session.json workspaces=3
+2026-08-27T09:12:28.287621Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wS" tab_id="wS:t1"
+2026-08-27T09:12:33.294403Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/home/zakarch/.config/herdr/session.json workspaces=3
+2026-08-27T09:39:40.204240Z  WARN herdr::detect::manifest_update: skipping unknown remote manifest agent agent="qwen"
+2026-08-27T10:09:40.293733Z  WARN herdr::detect::manifest_update: skipping unknown remote manifest agent agent="qwen"
+2026-08-27T10:10:31.887756Z  WARN herdr::detect::manifest_update: agent detection manifest update failed for agent agent="hermes" error=fetch failed: failed to fetch https://herdr.dev/agent-detection/hermes.toml
+2026-08-27T11:02:47.772899Z  WARN herdr::detect::manifest_update: skipping unknown remote manifest agent agent="qwen"
+2026-08-27T11:32:48.534815Z  WARN herdr::detect::manifest_update: skipping unknown remote manifest agent agent="qwen"
+2026-08-27T11:34:20.254805Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wS" tab_id="wS:t4"
+2026-08-27T11:34:25.261405Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/home/zakarch/.config/herdr/session.json workspaces=3
+2026-08-27T11:34:35.098236Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wS" tab_id="wS:t1"
+2026-08-27T11:34:40.104244Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/home/zakarch/.config/herdr/session.json workspaces=3
+2026-08-27T11:34:50.165849Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wS" tab_id="wS:t4"
+2026-08-27T11:34:55.172552Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/home/zakarch/.config/herdr/session.json workspaces=3
+2026-08-27T11:37:30.044074Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wS" tab_id="wS:t1"
+2026-08-27T11:37:35.051089Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/home/zakarch/.config/herdr/session.json workspaces=3
+2026-08-27T11:47:15.583573Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wS" tab_id="wS:t4"
+2026-08-27T11:47:20.590388Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/home/zakarch/.config/herdr/session.json workspaces=3
+2026-08-27T11:53:20.560977Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wS" tab_id="wS:t1"
+2026-08-27T11:53:25.568532Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/home/zakarch/.config/herdr/session.json workspaces=3
+2026-08-27T12:02:48.628628Z  WARN herdr::detect::manifest_update: skipping unknown remote manifest agent agent="qwen"
+2026-08-27T12:28:15.649822Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wS" tab_id="wS:t4"
+2026-08-27T12:28:20.657259Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/home/zakarch/.config/herdr/session.json workspaces=3
+2026-08-27T12:29:10.317959Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wS" tab_id="wS:t5"
+2026-08-27T12:29:11.966549Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wS" tab_id="wS:t4"
+2026-08-27T12:29:16.974154Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/home/zakarch/.config/herdr/session.json workspaces=3
+2026-08-27T12:29:25.618430Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wS" tab_id="wS:t1"
+2026-08-27T12:29:30.626792Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/home/zakarch/.config/herdr/session.json workspaces=3
+2026-08-27T12:29:31.046330Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wS" tab_id="wS:t4"
+2026-08-27T12:29:36.054872Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/home/zakarch/.config/herdr/session.json workspaces=3
+2026-08-27T12:32:48.544038Z  WARN herdr::detect::manifest_update: skipping unknown remote manifest agent agent="qwen"
+2026-08-27T12:36:13.826963Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wS" tab_id="wS:t1"
+2026-08-27T12:36:18.835850Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/home/zakarch/.config/herdr/session.json workspaces=3
+2026-08-27T12:49:13.563828Z  INFO herdr::server::headless: client resize client_id=2 cols=134 rows=32 cell_width_px=0 cell_height_px=0
+2026-08-27T12:50:55.492829Z  INFO herdr::server::headless: client resize client_id=2 cols=131 rows=29 cell_width_px=0 cell_height_px=0
+2026-08-27T12:51:42.789144Z  INFO herdr::server::headless: client resize client_id=2 cols=134 rows=32 cell_width_px=0 cell_height_px=0
+2026-08-27T12:52:58.981226Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wS" tab_id="wS:t4"
+2026-08-27T12:53:03.989941Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/home/zakarch/.config/herdr/session.json workspaces=3
+2026-08-27T12:53:06.754671Z  INFO herdr::server::headless: client resize client_id=2 cols=131 rows=29 cell_width_px=0 cell_height_px=0
+2026-08-27T12:54:17.361696Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wS" tab_id="wS:t5"
+2026-08-27T12:54:22.370458Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/home/zakarch/.config/herdr/session.json workspaces=3
+2026-08-27T12:55:05.810252Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wS" tab_id="wS:t1"
+2026-08-27T12:55:10.813183Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/home/zakarch/.config/herdr/session.json workspaces=3
+2026-08-27T12:59:24.043681Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wS" tab_id="wS:t4"
+2026-08-27T12:59:29.052693Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/home/zakarch/.config/herdr/session.json workspaces=3
+2026-08-27T13:00:13.383480Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wS" tab_id="wS:t1"
+2026-08-27T13:00:18.392655Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/home/zakarch/.config/herdr/session.json workspaces=3
+2026-08-27T13:01:08.004563Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wS" tab_id="wS:t4"
+2026-08-27T13:01:13.013571Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/home/zakarch/.config/herdr/session.json workspaces=3
+2026-08-27T13:01:57.938657Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wS" tab_id="wS:t6"
+2026-08-27T13:02:02.948085Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/home/zakarch/.config/herdr/session.json workspaces=3
+2026-08-27T13:02:48.583548Z  WARN herdr::detect::manifest_update: skipping unknown remote manifest agent agent="qwen"
+2026-08-27T13:03:12.293414Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wS" tab_id="wS:t1"
+2026-08-27T13:03:17.297257Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/home/zakarch/.config/herdr/session.json workspaces=3
+2026-08-27T13:04:35.397589Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wS" tab_id="wS:t4"
+2026-08-27T13:04:40.407741Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/home/zakarch/.config/herdr/session.json workspaces=3
+2026-08-27T13:06:26.007552Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wS" tab_id="wS:t1"
+2026-08-27T13:06:31.017689Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/home/zakarch/.config/herdr/session.json workspaces=3
+2026-08-27T13:07:36.753855Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wS" tab_id="wS:t4"
+2026-08-27T13:07:41.763016Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/home/zakarch/.config/herdr/session.json workspaces=3
+2026-08-27T13:09:31.324853Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wS" tab_id="wS:t1"
+2026-08-27T13:09:36.329671Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/home/zakarch/.config/herdr/session.json workspaces=3
+2026-08-27T13:14:29.393299Z  INFO herdr::logging: workspace focused event="workspace.focus" subsystem="workspace" outcome="ok" workspace_id="wT"
+2026-08-27T13:14:29.393332Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wT" tab_id="wT:t1"
+2026-08-27T13:14:34.394261Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/home/zakarch/.config/herdr/session.json workspaces=3
+2026-08-27T13:14:42.257228Z  INFO herdr::logging: tab renamed event="tab.rename" subsystem="tab" outcome="ok" workspace_id="wT" tab_id="wT:t1"
+2026-08-27T13:14:47.258304Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/home/zakarch/.config/herdr/session.json workspaces=3
+2026-08-27T13:15:27.109154Z  INFO herdr::app::actions: copied selection to clipboard
+2026-08-27T13:16:31.233500Z  INFO herdr::app::actions: copied selection to clipboard
+2026-08-27T13:16:52.817242Z  INFO herdr::app::actions: copied selection to clipboard
+2026-08-27T13:18:50.877273Z  INFO herdr::logging: workspace focused event="workspace.focus" subsystem="workspace" outcome="ok" workspace_id="wS"
+2026-08-27T13:18:50.877306Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wS" tab_id="wS:t1"
+2026-08-27T13:18:54.305290Z  INFO herdr::logging: workspace focused event="workspace.focus" subsystem="workspace" outcome="ok" workspace_id="wT"
+2026-08-27T13:18:54.305321Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wT" tab_id="wT:t1"
+2026-08-27T13:18:59.308803Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/home/zakarch/.config/herdr/session.json workspaces=3
+2026-08-27T13:19:16.149230Z  INFO herdr::logging: workspace focused event="workspace.focus" subsystem="workspace" outcome="ok" workspace_id="wS"
+2026-08-27T13:19:16.149260Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wS" tab_id="wS:t1"
+2026-08-27T13:19:21.150806Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/home/zakarch/.config/herdr/session.json workspaces=3
+2026-08-27T13:19:32.200560Z  INFO herdr::logging: workspace focused event="workspace.focus" subsystem="workspace" outcome="ok" workspace_id="wV"
+2026-08-27T13:19:32.200591Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wV" tab_id="wV:t1"
+2026-08-27T13:19:35.648802Z  INFO herdr::logging: workspace focused event="workspace.focus" subsystem="workspace" outcome="ok" workspace_id="wT"
+2026-08-27T13:19:35.648836Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wT" tab_id="wT:t1"
+2026-08-27T13:19:40.650365Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/home/zakarch/.config/herdr/session.json workspaces=3
+2026-08-27T13:20:23.568176Z  INFO herdr::logging: workspace focused event="workspace.focus" subsystem="workspace" outcome="ok" workspace_id="wS"
+2026-08-27T13:20:23.568219Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wS" tab_id="wS:t1"
+2026-08-27T13:20:24.916383Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wS" tab_id="wS:t4"
+2026-08-27T13:20:29.427798Z  INFO herdr::logging: workspace focused event="workspace.focus" subsystem="workspace" outcome="ok" workspace_id="wT"
+2026-08-27T13:20:29.427826Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wT" tab_id="wT:t1"
+2026-08-27T13:20:34.434461Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/home/zakarch/.config/herdr/session.json workspaces=3
+2026-08-27T13:21:00.867510Z  INFO herdr::logging: spawning pane terminal event="pane.spawn.start" subsystem="pane" outcome="started" pane_id=7 rows=28 cols=127 scrollback_limit_bytes=10000000
+2026-08-27T13:21:00.869410Z  INFO herdr::logging: pane child spawned event="pane.spawned" subsystem="pane" outcome="ok" pane_id=7 pid=72042
+2026-08-27T13:21:00.869513Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wT" tab_id="wT:t2"
+2026-08-27T13:21:05.873935Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/home/zakarch/.config/herdr/session.json workspaces=3
+2026-08-27T13:21:44.783174Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wT" tab_id="wT:t1"
+2026-08-27T13:21:49.787731Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/home/zakarch/.config/herdr/session.json workspaces=3
+2026-08-27T13:21:50.887049Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wT" tab_id="wT:t2"
+2026-08-27T13:21:53.206895Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wT" tab_id="wT:t1"
+2026-08-27T13:21:58.211905Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/home/zakarch/.config/herdr/session.json workspaces=3
+2026-08-27T13:22:50.706287Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wT" tab_id="wT:t2"
+2026-08-27T13:22:55.707663Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/home/zakarch/.config/herdr/session.json workspaces=3
+2026-08-27T13:23:06.462288Z  INFO herdr::logging: tab renamed event="tab.rename" subsystem="tab" outcome="ok" workspace_id="wT" tab_id="wT:t2"
+2026-08-27T13:23:08.058353Z  INFO herdr::logging: spawning pane terminal event="pane.spawn.start" subsystem="pane" outcome="started" pane_id=8 rows=28 cols=127 scrollback_limit_bytes=10000000
+2026-08-27T13:23:08.060272Z  INFO herdr::logging: pane child spawned event="pane.spawned" subsystem="pane" outcome="ok" pane_id=8 pid=74934
+2026-08-27T13:23:08.060422Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wT" tab_id="wT:t3"
+2026-08-27T13:23:13.063022Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/home/zakarch/.config/herdr/session.json workspaces=3
+2026-08-27T13:23:16.098103Z  INFO herdr::logging: tab renamed event="tab.rename" subsystem="tab" outcome="ok" workspace_id="wT" tab_id="wT:t3"
+2026-08-27T13:23:17.130072Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wT" tab_id="wT:t2"
+2026-08-27T13:23:18.686084Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wT" tab_id="wT:t3"
+2026-08-27T13:23:23.687939Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/home/zakarch/.config/herdr/session.json workspaces=3
+2026-08-27T13:24:22.173453Z  INFO herdr::server::headless: client resize client_id=2 cols=134 rows=32 cell_width_px=0 cell_height_px=0
+2026-08-27T13:24:22.273651Z  INFO herdr::server::headless: client resize client_id=2 cols=134 rows=32 cell_width_px=0 cell_height_px=0
+2026-08-27T13:24:22.774175Z  INFO herdr::server::headless: client resize client_id=2 cols=131 rows=29 cell_width_px=0 cell_height_px=0
+2026-08-27T13:24:51.633001Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wT" tab_id="wT:t1"
+2026-08-27T13:24:56.634771Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/home/zakarch/.config/herdr/session.json workspaces=3
+2026-08-27T13:25:45.864773Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wT" tab_id="wT:t3"
+2026-08-27T13:25:50.866841Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/home/zakarch/.config/herdr/session.json workspaces=3
+2026-08-27T13:59:19.187519Z  WARN herdr::detect::manifest_update: skipping unknown remote manifest agent agent="qwen"
+2026-08-27T14:32:34.035749Z  WARN herdr::detect::manifest_update: skipping unknown remote manifest agent agent="qwen"
+2026-08-27T15:10:41.396317Z  WARN herdr::detect::manifest_update: skipping unknown remote manifest agent agent="qwen"
+2026-08-27T15:30:29.518110Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wT" tab_id="wT:t1"
+2026-08-27T15:30:34.533178Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/home/zakarch/.config/herdr/session.json workspaces=3
+2026-08-27T15:40:43.009870Z  WARN herdr::detect::manifest_update: skipping unknown remote manifest agent agent="qwen"
+2026-08-27T16:10:42.151400Z  WARN herdr::detect::manifest_update: skipping unknown remote manifest agent agent="qwen"
+2026-08-27T16:23:38.674636Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wT" tab_id="wT:t2"
+2026-08-27T16:23:43.679607Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/home/zakarch/.config/herdr/session.json workspaces=3
+2026-08-27T16:24:20.206726Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wT" tab_id="wT:t3"
+2026-08-27T16:24:25.210724Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/home/zakarch/.config/herdr/session.json workspaces=3
+2026-08-27T16:36:03.822044Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wT" tab_id="wT:t1"
+2026-08-27T16:36:08.824150Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/home/zakarch/.config/herdr/session.json workspaces=3
+2026-08-27T16:40:41.952722Z  WARN herdr::detect::manifest_update: skipping unknown remote manifest agent agent="qwen"
+2026-08-27T19:08:41.098405Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wT" tab_id="wT:t2"
+2026-08-27T19:08:42.086284Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wT" tab_id="wT:t1"
+2026-08-27T19:08:47.093024Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/home/zakarch/.config/herdr/session.json workspaces=3
+2026-08-27T19:23:18.092609Z  WARN herdr::detect::manifest_update: agent detection manifest update failed: failed to fetch https://herdr.dev/agent-detection/index.toml
+2026-08-27T19:53:18.092219Z  WARN herdr::detect::manifest_update: agent detection manifest update failed: failed to fetch https://herdr.dev/agent-detection/index.toml
+2026-08-27T20:17:20.444110Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wT" tab_id="wT:t2"
+2026-08-27T20:17:25.452430Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/home/zakarch/.config/herdr/session.json workspaces=3
+2026-08-27T20:17:31.368823Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wT" tab_id="wT:t1"
+2026-08-27T20:17:36.376622Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/home/zakarch/.config/herdr/session.json workspaces=3
+2026-08-27T20:17:53.470256Z  INFO herdr::server::headless: client resize client_id=2 cols=63 rows=29 cell_width_px=0 cell_height_px=0
+2026-08-27T20:17:56.275089Z  INFO herdr::server::headless: client resize client_id=2 cols=131 rows=29 cell_width_px=0 cell_height_px=0
+2026-08-27T20:18:00.804462Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wT" tab_id="wT:t2"
+2026-08-27T20:18:05.812201Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/home/zakarch/.config/herdr/session.json workspaces=3
+2026-08-27T20:18:14.825519Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wT" tab_id="wT:t1"
+2026-08-27T20:18:19.833938Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/home/zakarch/.config/herdr/session.json workspaces=3
+2026-08-27T20:18:47.078296Z  INFO herdr::server::headless: client resize client_id=2 cols=131 rows=31 cell_width_px=0 cell_height_px=0
+2026-08-27T20:18:47.979323Z  INFO herdr::server::headless: client resize client_id=2 cols=131 rows=29 cell_width_px=0 cell_height_px=0
+2026-08-27T20:19:03.511901Z  INFO herdr::server::headless: client resize client_id=2 cols=131 rows=31 cell_width_px=0 cell_height_px=0
+2026-08-27T20:19:04.413405Z  INFO herdr::server::headless: client resize client_id=2 cols=131 rows=29 cell_width_px=0 cell_height_px=0
+2026-08-27T20:19:12.629013Z  INFO herdr::server::headless: client resize client_id=2 cols=63 rows=29 cell_width_px=0 cell_height_px=0
+2026-08-27T20:19:14.037817Z  INFO herdr::server::headless: client resize client_id=2 cols=131 rows=29 cell_width_px=0 cell_height_px=0
+2026-08-27T20:19:16.436425Z  INFO herdr::server::headless: client resize client_id=2 cols=63 rows=29 cell_width_px=0 cell_height_px=0
+2026-08-27T20:19:17.846072Z  INFO herdr::server::headless: client resize client_id=2 cols=131 rows=29 cell_width_px=0 cell_height_px=0
+2026-08-27T20:19:27.361277Z  INFO herdr::server::headless: client resize client_id=2 cols=131 rows=31 cell_width_px=0 cell_height_px=0
+2026-08-27T20:19:28.262852Z  INFO herdr::server::headless: client resize client_id=2 cols=131 rows=29 cell_width_px=0 cell_height_px=0
+2026-08-27T20:19:48.838345Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wT" tab_id="wT:t2"
+2026-08-27T20:19:49.854449Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wT" tab_id="wT:t3"
+2026-08-27T20:19:50.858459Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wT" tab_id="wT:t1"
+2026-08-27T20:19:55.862226Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/home/zakarch/.config/herdr/session.json workspaces=3
+2026-08-27T20:20:29.797245Z  INFO herdr::server::headless: client resize client_id=2 cols=131 rows=31 cell_width_px=0 cell_height_px=0
+2026-08-27T20:20:30.698423Z  INFO herdr::server::headless: client resize client_id=2 cols=131 rows=29 cell_width_px=0 cell_height_px=0
+2026-08-27T20:20:50.849167Z  INFO herdr::server::headless: client resize client_id=2 cols=131 rows=31 cell_width_px=0 cell_height_px=0
+2026-08-27T20:20:51.850548Z  INFO herdr::server::headless: client resize client_id=2 cols=131 rows=29 cell_width_px=0 cell_height_px=0
+2026-08-27T20:23:15.594988Z  WARN herdr::detect::manifest_update: skipping unknown remote manifest agent agent="qwen"
+2026-08-27T20:37:16.029417Z  INFO herdr::server::headless: client resize client_id=2 cols=63 rows=29 cell_width_px=0 cell_height_px=0
+2026-08-27T20:37:21.639162Z  INFO herdr::server::headless: client resize client_id=2 cols=131 rows=29 cell_width_px=0 cell_height_px=0
+2026-08-27T20:37:34.607169Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wT" tab_id="wT:t2"
+2026-08-27T20:37:39.616738Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/home/zakarch/.config/herdr/session.json workspaces=3
+2026-08-27T20:43:00.518985Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wT" tab_id="wT:t1"
+2026-08-27T20:43:05.529029Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/home/zakarch/.config/herdr/session.json workspaces=3
+2026-08-27T20:47:45.398785Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wT" tab_id="wT:t2"
+2026-08-27T20:47:46.454830Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wT" tab_id="wT:t1"
+2026-08-27T20:47:51.464803Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/home/zakarch/.config/herdr/session.json workspaces=3
+2026-08-27T20:48:03.965778Z  INFO herdr::server::headless: client resize client_id=2 cols=122 rows=28 cell_width_px=0 cell_height_px=0
+2026-08-27T20:53:15.597679Z  WARN herdr::detect::manifest_update: skipping unknown remote manifest agent agent="qwen"
+2026-08-27T22:25:18.431366Z  INFO herdr::server::headless: client resize client_id=2 cols=122 rows=29 cell_width_px=0 cell_height_px=0
+2026-08-27T22:25:18.831782Z  INFO herdr::server::headless: client resize client_id=2 cols=122 rows=28 cell_width_px=0 cell_height_px=0
+2026-08-27T22:25:56.166373Z  WARN herdr::detect::manifest_update: skipping unknown remote manifest agent agent="qwen"
+2026-08-27T22:39:16.185276Z  INFO herdr::server::headless: client resize client_id=2 cols=124 rows=28 cell_width_px=0 cell_height_px=0
+2026-08-27T22:39:26.401891Z  INFO herdr::server::headless: client resize client_id=2 cols=122 rows=28 cell_width_px=0 cell_height_px=0
+2026-08-27T22:43:04.384862Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wT" tab_id="wT:t2"
+2026-08-27T22:43:09.393090Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/home/zakarch/.config/herdr/session.json workspaces=3
+2026-08-27T22:43:10.200677Z  INFO herdr::logging: workspace focused event="workspace.focus" subsystem="workspace" outcome="ok" workspace_id="wV"
+2026-08-27T22:43:10.200736Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wV" tab_id="wV:t1"
+2026-08-27T22:43:15.004454Z  INFO herdr::logging: workspace focused event="workspace.focus" subsystem="workspace" outcome="ok" workspace_id="wS"
+2026-08-27T22:43:15.004515Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wS" tab_id="wS:t4"
+2026-08-27T22:43:20.013294Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/home/zakarch/.config/herdr/session.json workspaces=3
+2026-08-27T23:05:34.763384Z  WARN herdr::detect::manifest_update: skipping unknown remote manifest agent agent="qwen"
+2026-08-27T23:37:01.571069Z  WARN herdr::detect::manifest_update: skipping unknown remote manifest agent agent="qwen"
+2026-08-27T23:44:35.492744Z  INFO herdr::server::headless: client resize client_id=2 cols=119 rows=29 cell_width_px=0 cell_height_px=0
+2026-08-28T08:44:53.557546Z  INFO herdr::server::headless: client resize client_id=2 cols=122 rows=28 cell_width_px=0 cell_height_px=0
+2026-08-28T08:47:05.260839Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wS" tab_id="wS:t1"
+2026-08-28T08:47:10.266036Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/home/zakarch/.config/herdr/session.json workspaces=3
+2026-08-28T09:01:03.741116Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wS" tab_id="wS:t4"
+2026-08-28T09:01:05.172188Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wS" tab_id="wS:t5"
+2026-08-28T09:01:06.467631Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wS" tab_id="wS:t6"
+2026-08-28T09:01:11.469874Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/home/zakarch/.config/herdr/session.json workspaces=3
+2026-08-28T09:01:21.519636Z  INFO herdr::logging: workspace focused event="workspace.focus" subsystem="workspace" outcome="ok" workspace_id="wT"
+2026-08-28T09:01:21.519706Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wT" tab_id="wT:t2"
+2026-08-28T09:01:26.524284Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/home/zakarch/.config/herdr/session.json workspaces=3
+2026-08-28T09:01:33.892987Z  INFO herdr::logging: workspace focused event="workspace.focus" subsystem="workspace" outcome="ok" workspace_id="wV"
+2026-08-28T09:01:33.893037Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wV" tab_id="wV:t1"
+2026-08-28T09:01:37.743976Z  INFO herdr::logging: workspace focused event="workspace.focus" subsystem="workspace" outcome="ok" workspace_id="wS"
+2026-08-28T09:01:37.744023Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wS" tab_id="wS:t6"
+2026-08-28T09:01:42.747121Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/home/zakarch/.config/herdr/session.json workspaces=3
+2026-08-28T09:02:39.429001Z  INFO herdr::server::headless: client resize client_id=2 cols=122 rows=29 cell_width_px=0 cell_height_px=0
+2026-08-28T09:02:39.829389Z  INFO herdr::server::headless: client resize client_id=2 cols=122 rows=28 cell_width_px=0 cell_height_px=0
+2026-08-28T09:02:54.850096Z  INFO herdr::server::headless: client resize client_id=2 cols=122 rows=29 cell_width_px=0 cell_height_px=0
+2026-08-28T09:02:55.250498Z  INFO herdr::server::headless: client resize client_id=2 cols=122 rows=28 cell_width_px=0 cell_height_px=0
+2026-08-28T09:03:26.605967Z  WARN herdr::detect::manifest_update: skipping unknown remote manifest agent agent="qwen"
+2026-08-28T09:03:31.199537Z  INFO herdr::server::headless: client resize client_id=2 cols=122 rows=29 cell_width_px=0 cell_height_px=0
+2026-08-28T09:03:31.599911Z  INFO herdr::server::headless: client resize client_id=2 cols=122 rows=28 cell_width_px=0 cell_height_px=0
+2026-08-28T09:05:20.494144Z  INFO herdr::server::headless: client resize client_id=2 cols=122 rows=29 cell_width_px=0 cell_height_px=0
+2026-08-28T09:05:20.894501Z  INFO herdr::server::headless: client resize client_id=2 cols=122 rows=28 cell_width_px=0 cell_height_px=0
+2026-08-28T09:09:09.306124Z  INFO herdr::server::headless: client connected client_id=4 cols=196 rows=52 cell_width_px=0 cell_height_px=0 render_encoding=SemanticFrame
+2026-08-28T09:09:13.258091Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wS" tab_id="wS:t1"
+2026-08-28T09:09:18.260686Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/home/zakarch/.config/herdr/session.json workspaces=3
+2026-08-28T09:09:25.783042Z  INFO herdr::server::headless: client resize client_id=2 cols=80 rows=24 cell_width_px=0 cell_height_px=0
+2026-08-28T09:09:25.793735Z  INFO herdr::server::headless: client detached client_id=2
+2026-08-28T09:09:25.807047Z  INFO herdr::server::headless: client disconnected client_id=2
+2026-08-28T09:09:43.563377Z  INFO herdr::server::headless: client resize client_id=4 cols=94 rows=52 cell_width_px=0 cell_height_px=0
+2026-08-28T09:09:48.371340Z  INFO herdr::server::headless: client resize client_id=4 cols=196 rows=52 cell_width_px=0 cell_height_px=0
+2026-08-28T09:10:00.191322Z  INFO herdr::server::headless: client resize client_id=4 cols=94 rows=52 cell_width_px=0 cell_height_px=0
+2026-08-28T09:10:01.893473Z  INFO herdr::server::headless: client resize client_id=4 cols=196 rows=52 cell_width_px=0 cell_height_px=0
+2026-08-28T09:12:39.151463Z  INFO herdr::server::headless: client resize client_id=4 cols=196 rows=41 cell_width_px=0 cell_height_px=0
+2026-08-28T09:12:39.551795Z  INFO herdr::server::headless: client resize client_id=4 cols=196 rows=43 cell_width_px=0 cell_height_px=0
+2026-08-28T09:12:39.752012Z  INFO herdr::server::headless: client resize client_id=4 cols=196 rows=41 cell_width_px=0 cell_height_px=0
+2026-08-28T09:12:39.852112Z  INFO herdr::server::headless: client resize client_id=4 cols=196 rows=41 cell_width_px=0 cell_height_px=0
+2026-08-28T09:12:44.760032Z  INFO herdr::server::headless: client resize client_id=4 cols=94 rows=41 cell_width_px=0 cell_height_px=0
+2026-08-28T09:12:47.865219Z  INFO herdr::server::headless: client resize client_id=4 cols=196 rows=41 cell_width_px=0 cell_height_px=0
+2026-08-28T09:12:49.767524Z  INFO herdr::server::headless: client resize client_id=4 cols=94 rows=41 cell_width_px=0 cell_height_px=0
+2026-08-28T09:12:50.568276Z  INFO herdr::server::headless: client resize client_id=4 cols=196 rows=41 cell_width_px=0 cell_height_px=0
+2026-08-28T09:12:55.778820Z  INFO herdr::server::headless: client resize client_id=4 cols=94 rows=41 cell_width_px=0 cell_height_px=0
+2026-08-28T09:12:56.679690Z  INFO herdr::server::headless: client resize client_id=4 cols=196 rows=41 cell_width_px=0 cell_height_px=0
+2026-08-28T09:13:04.695118Z  INFO herdr::server::headless: client resize client_id=4 cols=196 rows=52 cell_width_px=0 cell_height_px=0
+2026-08-28T09:13:04.895306Z  INFO herdr::server::headless: client resize client_id=4 cols=196 rows=54 cell_width_px=0 cell_height_px=0
+2026-08-28T09:13:05.295701Z  INFO herdr::server::headless: client resize client_id=4 cols=196 rows=52 cell_width_px=0 cell_height_px=0
+2026-08-28T09:13:05.395924Z  INFO herdr::server::headless: client resize client_id=4 cols=196 rows=52 cell_width_px=0 cell_height_px=0
+2026-08-28T09:13:08.201582Z  INFO herdr::server::headless: client resize client_id=4 cols=180 rows=44 cell_width_px=0 cell_height_px=0
+2026-08-28T09:13:09.804643Z  INFO herdr::server::headless: client resize client_id=4 cols=156 rows=41 cell_width_px=0 cell_height_px=0
+2026-08-28T09:19:11.355229Z  INFO herdr::server::headless: server shutdown initiated
+2026-08-28T09:19:11.405390Z  INFO herdr::server::headless: completing server shutdown
+2026-08-28T09:19:11.456641Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/home/zakarch/.config/herdr/session.json workspaces=3
+2026-08-28T09:19:11.456682Z  INFO herdr::server::headless: headless server exiting
+2026-08-28T09:19:11.466351Z  INFO herdr::logging: pane child exited event="pane.exit" subsystem="pane" outcome="completed" pane_id=7 status="ExitStatus { code: 1, signal: None }"
+2026-08-28T09:19:11.474474Z  INFO herdr::pane: pane session terminated pane=7 pid=72042 signal=Hangup
+2026-08-28T09:19:11.492819Z  INFO herdr::logging: pane child exited event="pane.exit" subsystem="pane" outcome="completed" pane_id=4 status="ExitStatus { code: 1, signal: None }"
+2026-08-28T09:19:11.492882Z  INFO herdr::pane: pane session terminated pane=4 pid=4104 signal=Hangup
+2026-08-28T09:19:11.500344Z  INFO herdr::logging: pane child exited event="pane.exit" subsystem="pane" outcome="completed" pane_id=5 status="ExitStatus { code: 1, signal: None }"
+2026-08-28T09:19:11.565916Z  INFO herdr::pane: pane session terminated pane=5 pid=4108 signal=Hangup
+2026-08-28T09:19:11.579252Z  INFO herdr::logging: pane child exited event="pane.exit" subsystem="pane" outcome="completed" pane_id=6 status="ExitStatus { code: 1, signal: None }"
+2026-08-28T09:19:11.580143Z  INFO herdr::pane: pane session terminated pane=6 pid=4112 signal=Hangup
+2026-08-28T09:19:11.595817Z  INFO herdr::logging: pane child exited event="pane.exit" subsystem="pane" outcome="completed" pane_id=1 status="ExitStatus { code: 1, signal: None }"
+2026-08-28T09:19:11.611202Z  INFO herdr::pane: pane session terminated pane=1 pid=4093 signal=Hangup
+2026-08-28T09:19:11.624261Z  INFO herdr::logging: pane child exited event="pane.exit" subsystem="pane" outcome="completed" pane_id=2 status="ExitStatus { code: 1, signal: None }"
+2026-08-28T09:19:11.642106Z  INFO herdr::pane: pane session terminated pane=2 pid=4096 signal=Hangup
+2026-08-28T09:19:11.651705Z  INFO herdr::logging: pane child exited event="pane.exit" subsystem="pane" outcome="completed" pane_id=3 status="ExitStatus { code: 1, signal: None }"
+2026-08-28T09:19:11.669661Z  INFO herdr::pane: pane session terminated pane=3 pid=4100 signal=Hangup
+2026-08-28T09:19:11.681336Z  INFO herdr::logging: pane child exited event="pane.exit" subsystem="pane" outcome="completed" pane_id=8 status="ExitStatus { code: 1, signal: None }"
+2026-08-28T09:19:11.698407Z  INFO herdr::pane: pane session terminated pane=8 pid=74934 signal=Hangup
+2026-08-28T09:19:11.700696Z  INFO herdr::logging: herdr exiting event="app.shutdown" subsystem="server" outcome="completed" pid=4079
+2026-08-28T09:26:30.923388Z  INFO herdr::api::server: api server listening path=/home/zakarch/.config/herdr/herdr.sock
+2026-08-28T09:26:30.924943Z  INFO herdr::logging: spawning pane terminal event="pane.spawn.start" subsystem="pane" outcome="started" pane_id=1 rows=24 cols=80 scrollback_limit_bytes=10000000
+2026-08-28T09:26:30.926115Z  INFO herdr::logging: pane child spawned event="pane.spawned" subsystem="pane" outcome="ok" pane_id=1 pid=28361
+2026-08-28T09:26:30.926320Z  INFO herdr::logging: spawning pane terminal event="pane.spawn.start" subsystem="pane" outcome="started" pane_id=2 rows=24 cols=80 scrollback_limit_bytes=10000000
+2026-08-28T09:26:30.927376Z  INFO herdr::logging: pane child spawned event="pane.spawned" subsystem="pane" outcome="ok" pane_id=2 pid=28364
+2026-08-28T09:26:30.927597Z  INFO herdr::logging: spawning pane terminal event="pane.spawn.start" subsystem="pane" outcome="started" pane_id=3 rows=24 cols=80 scrollback_limit_bytes=10000000
+2026-08-28T09:26:30.928646Z  INFO herdr::logging: pane child spawned event="pane.spawned" subsystem="pane" outcome="ok" pane_id=3 pid=28367
+2026-08-28T09:26:30.928833Z  INFO herdr::logging: spawning pane terminal event="pane.spawn.start" subsystem="pane" outcome="started" pane_id=4 rows=24 cols=80 scrollback_limit_bytes=10000000
+2026-08-28T09:26:30.930029Z  INFO herdr::logging: pane child spawned event="pane.spawned" subsystem="pane" outcome="ok" pane_id=4 pid=28372
+2026-08-28T09:26:30.930328Z  INFO herdr::logging: spawning pane terminal event="pane.spawn.start" subsystem="pane" outcome="started" pane_id=5 rows=24 cols=80 scrollback_limit_bytes=10000000
+2026-08-28T09:26:30.931419Z  INFO herdr::logging: pane child spawned event="pane.spawned" subsystem="pane" outcome="ok" pane_id=5 pid=28376
+2026-08-28T09:26:30.931631Z  INFO herdr::logging: spawning pane terminal event="pane.spawn.start" subsystem="pane" outcome="started" pane_id=6 rows=24 cols=80 scrollback_limit_bytes=10000000
+2026-08-28T09:26:30.932841Z  INFO herdr::logging: pane child spawned event="pane.spawned" subsystem="pane" outcome="ok" pane_id=6 pid=28380
+2026-08-28T09:26:30.933104Z  INFO herdr::logging: spawning pane terminal event="pane.spawn.start" subsystem="pane" outcome="started" pane_id=7 rows=24 cols=80 scrollback_limit_bytes=10000000
+2026-08-28T09:26:30.934718Z  INFO herdr::logging: pane child spawned event="pane.spawned" subsystem="pane" outcome="ok" pane_id=7 pid=28386
+2026-08-28T09:26:30.935133Z  INFO herdr::logging: spawning pane terminal event="pane.spawn.start" subsystem="pane" outcome="started" pane_id=8 rows=24 cols=80 scrollback_limit_bytes=10000000
+2026-08-28T09:26:30.936522Z  INFO herdr::logging: pane child spawned event="pane.spawned" subsystem="pane" outcome="ok" pane_id=8 pid=28400
+2026-08-28T09:26:30.936798Z  INFO herdr::logging: session restore evaluated event="persist.restore" subsystem="persist" outcome="ok" workspaces=3
+2026-08-28T09:26:30.936835Z  INFO herdr::app: using pane scrollback configuration pane_scrollback_limit_bytes=10000000
+2026-08-28T09:26:30.989193Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-08-28T09:26:30.991322Z  INFO herdr::server::headless: restored session already has workspaces; ignoring startup cwd cwd=/home/zakarch
+2026-08-28T09:26:30.991447Z  INFO herdr::server::headless: client protocol socket listening path=/home/zakarch/.config/herdr/herdr-client.sock
+2026-08-28T09:26:30.991484Z  INFO herdr::server::headless: herdr server started api_socket=/home/zakarch/.config/herdr/herdr.sock client_socket=/home/zakarch/.config/herdr/herdr-client.sock
+2026-08-28T09:26:30.991862Z  INFO herdr::logging: herdr starting event="app.startup" subsystem="server" outcome="started" pid=28347
+2026-08-28T09:26:31.097452Z  INFO herdr::server::headless: client connected client_id=2 cols=168 rows=43 cell_width_px=0 cell_height_px=0 render_encoding=SemanticFrame
+2026-08-28T09:26:31.418285Z  WARN herdr::detect::manifest_update: skipping unknown remote manifest agent agent="qwen"
+2026-08-28T09:26:31.559650Z  INFO herdr::logging: update available event="update.available" subsystem="update" outcome="ok" version="0.8.2"
+2026-08-28T09:26:31.559677Z  INFO herdr::update: new stable build available at https://github.com/herdrdev/herdr/releases/download/v0.8.2/herdr-linux-x86_64
+2026-08-28T09:26:31.560126Z  INFO herdr::update: auto-update check: 0.8.2 available, waiting for explicit install
+2026-08-28T09:26:33.703582Z  INFO herdr::server::headless: client resize client_id=2 cols=147 rows=40 cell_width_px=0 cell_height_px=0
+2026-08-28T09:26:50.343252Z  INFO herdr::server::headless: client resize client_id=2 cols=130 rows=36 cell_width_px=0 cell_height_px=0
+2026-08-28T09:26:52.549760Z  INFO herdr::server::headless: client resize client_id=2 cols=123 rows=33 cell_width_px=0 cell_height_px=0
+2026-08-28T09:56:31.523014Z  WARN herdr::detect::manifest_update: skipping unknown remote manifest agent agent="qwen"
+2026-08-28T10:07:00.849999Z  INFO herdr::server::headless: client resize client_id=2 cols=112 rows=31 cell_width_px=0 cell_height_px=0
+2026-08-28T10:07:02.754852Z  INFO herdr::server::headless: client resize client_id=2 cols=123 rows=33 cell_width_px=0 cell_height_px=0
+2026-08-28T10:12:25.135173Z  INFO herdr::server::headless: client resize client_id=2 cols=80 rows=24 cell_width_px=0 cell_height_px=0
+2026-08-28T10:12:25.141197Z  INFO herdr::server::headless: client detached client_id=2
+2026-08-28T10:12:25.148154Z  INFO herdr::server::headless: client disconnected client_id=2
+2026-08-28T10:26:31.544910Z  WARN herdr::detect::manifest_update: skipping unknown remote manifest agent agent="qwen"
