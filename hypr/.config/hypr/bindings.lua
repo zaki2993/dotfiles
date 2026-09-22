@@ -12,6 +12,7 @@ hl.unbind("SUPER + P")
 hl.unbind("SUPER + L")
 hl.unbind("SUPER + G")
 hl.unbind("SUPER + T")
+hl.unbind("SUPER + CTRL + C")
 
 -- Group navigation keys
 hl.unbind("SUPER + TAB")
@@ -65,6 +66,12 @@ o.bind(
     "SUPER + C",
     "Change bor",
     "bash ~/.config/hypr/scripts/change_bor.sh"
+)
+
+o.bind(
+    "SUPER + CTRL + C",
+    "Next wallpaper",
+    "bash ~/.config/hypr/scripts/live_wallpaper.sh next"
 )
 
 
@@ -127,6 +134,12 @@ o.bind(
 )
 
 o.bind(
+    "SUPER + Z",
+    "perplexity",
+    "omarchy-launch-webapp 'https://www.perplexity.ai/'"
+)
+
+o.bind(
     "SUPER + Y",
     "YouTube",
     "omarchy-launch-webapp 'https://www.youtube.com/'"
@@ -143,3 +156,4 @@ o.bind(
     "X",
     "omarchy-launch-webapp 'https://x.com/'"
 )
+

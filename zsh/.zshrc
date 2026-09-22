@@ -100,3 +100,9 @@ export TERMINAL=ghostty
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
 
 . "$HOME/.local/share/../bin/env"
+
+# opencode
+export PATH=/home/zakarch/.opencode/bin:$PATH
+
+# Pi
+export PATH="/home/zakarch/.local/share/mise/installs/node/26.7.0/bin:$PATH"
