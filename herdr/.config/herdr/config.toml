@@ -84,8 +84,8 @@ pane_outer_borders = false
 # tmux had no scrollbar column beside its panes
 pane_scrollbars = false
 
-# kill-window and kill-session never asked
-confirm_close = false
+# Ask before closing a workspace (Herdr session)
+confirm_close = true
 
 # automatic-rename gave windows a name without prompting
 prompt_new_tab_name = false
@@ -105,4 +105,3 @@ agent_panel_sort = "spaces"
 # Play sounds when agents change state in background workspaces
 [ui.sound]
 enabled = true
-

@@ -4,23 +4,63 @@ eval "$(pyenv init -)"
 # ---------- Prompt ----------
 autoload -Uz vcs_info
 autoload -Uz colors && colors
+autoload -Uz add-zsh-hook
+zmodload zsh/datetime
 setopt PROMPT_SUBST
 
 # Keep custom prompt (oh-my-zsh sources after this block)
 ZSH_THEME=""
 
 zstyle ':vcs_info:git:*' check-for-changes true
-zstyle ':vcs_info:git:*' stagedstr ' %F{green}●%f'
-zstyle ':vcs_info:git:*' unstagedstr ' %F{yellow}●%f'
-zstyle ':vcs_info:git:*' formats ' %F{8}on%f %F{213}󰊢 %b%f%c%u'
-zstyle ':vcs_info:git:*' actionformats ' %F{8}on%f %F{213}󰊢 %b%f %F{red}(%a)%f%c%u'
+zstyle ':vcs_info:git:*' stagedstr ' %F{#9ece6a}+%F{#bb9af7}'
+zstyle ':vcs_info:git:*' unstagedstr ' %F{#e0af68}~%F{#bb9af7}'
+zstyle ':vcs_info:git:*' formats ' %F{#292e42}%K{#292e42}%F{#bb9af7} 󰊢 %b%c%u %k%F{#292e42}%f'
+zstyle ':vcs_info:git:*' actionformats ' %F{#292e42}%K{#292e42}%F{#bb9af7} 󰊢 %b%c%u %F{#f7768e}· %a %k%F{#292e42}%f'
 zstyle ':vcs_info:*' enable git
 
-precmd() { vcs_info }
+typeset -g _dotfiles_prompt_started='' _dotfiles_prompt_meta=''
+typeset -g _dotfiles_prompt_color='#7dcfff'
 
-PROMPT='%F{8}╭─%f %F{39}%B󰉋 %~%b%f${vcs_info_msg_0_}
-%(?.%F{cyan}.%F{red})╰─%f %(?.%F{green}.%F{red})%B❯%b%f '
-RPROMPT='%F{8} %*%f%(?.. %F{red}✘ %?%f)'
+_dotfiles_prompt_preexec() {
+  _dotfiles_prompt_started=$EPOCHSECONDS
+}
+
+_dotfiles_prompt_precmd() {
+  local last_status=$? elapsed minutes seconds
+  _dotfiles_prompt_meta=''
+  _dotfiles_prompt_color='#7dcfff'
+
+  if (( last_status != 0 )); then
+    _dotfiles_prompt_color='#f7768e'
+    _dotfiles_prompt_meta="%F{#f7768e}✕ ${last_status}%f %F{#565f89}·%f "
+  fi
+
+  if [[ -n $_dotfiles_prompt_started ]]; then
+    elapsed=$(( EPOCHSECONDS - _dotfiles_prompt_started ))
+    if (( elapsed >= 2 )); then
+      minutes=$(( elapsed / 60 ))
+      seconds=$(( elapsed % 60 ))
+      if (( minutes > 0 )); then
+        _dotfiles_prompt_meta+="%F{#e0af68} ${minutes}m ${seconds}s%f "
+      else
+        _dotfiles_prompt_meta+="%F{#e0af68} ${seconds}s%f "
+      fi
+      _dotfiles_prompt_meta+='%F{#565f89}·%f '
+    fi
+  fi
+
+  _dotfiles_prompt_started=''
+  vcs_info
+}
+
+add-zsh-hook -d preexec _dotfiles_prompt_preexec
+add-zsh-hook -d precmd _dotfiles_prompt_precmd
+add-zsh-hook preexec _dotfiles_prompt_preexec
+add-zsh-hook precmd _dotfiles_prompt_precmd
+
+PROMPT=$'\n''%F{#565f89}╭─%f%F{#292e42}%K{#292e42}%F{#7aa2f7}%B 󰉋 %4~ %b%k%F{#292e42}%f${vcs_info_msg_0_}
+%F{#565f89}╰─%f %(#.%F{#f7768e}#.%F{${_dotfiles_prompt_color}}❯)%f %b%k'
+RPROMPT='${_dotfiles_prompt_meta}%F{#565f89} %F{#a9b1d6}%D{%H:%M}%f'
 # ---------- Oh My Zsh ----------
 export ZSH="$HOME/.oh-my-zsh"
 
