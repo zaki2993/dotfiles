@@ -6,15 +6,21 @@ autoload -Uz vcs_info
 autoload -Uz colors && colors
 setopt PROMPT_SUBST
 
-zstyle ':vcs_info:git:*' formats ' %F{8}on%f %F{magenta}󰊢 %b%f'
-zstyle ':vcs_info:git:*' actionformats ' %F{8}on%f %F{magenta}󰊢 %b%f %F{red}(%a)%f'
+# Keep custom prompt (oh-my-zsh sources after this block)
+ZSH_THEME=""
+
+zstyle ':vcs_info:git:*' check-for-changes true
+zstyle ':vcs_info:git:*' stagedstr ' %F{green}●%f'
+zstyle ':vcs_info:git:*' unstagedstr ' %F{yellow}●%f'
+zstyle ':vcs_info:git:*' formats ' %F{8}on%f %F{213}󰊢 %b%f%c%u'
+zstyle ':vcs_info:git:*' actionformats ' %F{8}on%f %F{213}󰊢 %b%f %F{red}(%a)%f%c%u'
 zstyle ':vcs_info:*' enable git
 
 precmd() { vcs_info }
 
-PROMPT='%F{cyan}╭─%f %F{blue}%~%f${vcs_info_msg_0_}
-%F{cyan}╰─%f %(?.%F{green}.%F{red})❯%f '
-RPROMPT='%F{8}%*%f%(?.. %F{red}✘ %?%f)'
+PROMPT='%F{8}╭─%f %F{39}%B󰉋 %~%b%f${vcs_info_msg_0_}
+%(?.%F{cyan}.%F{red})╰─%f %(?.%F{green}.%F{red})%B❯%b%f '
+RPROMPT='%F{8} %*%f%(?.. %F{red}✘ %?%f)'
 # ---------- Oh My Zsh ----------
 export ZSH="$HOME/.oh-my-zsh"
 
