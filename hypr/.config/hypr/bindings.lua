@@ -151,9 +151,4 @@ o.bind(
     "omarchy-launch-or-focus-webapp WhatsApp 'https://web.whatsapp.com/'"
 )
 
-o.bind(
-    "SUPER + X",
-    "X",
-    "omarchy-launch-webapp 'https://x.com/'"
-)
 

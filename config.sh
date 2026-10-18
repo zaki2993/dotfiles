@@ -14,7 +14,8 @@ rm -f ~/.zshrc
 # 3. Create shortcuts using Stow
 echo "Stowing configurations..."
 cd ~/dotfiles
-stow nvim herdr zsh hypr
+stow nvim herdr zsh hypr agents
+~/.config/agents/link.sh
 
 # 4. Make Zsh the default shell
 echo "Changing default shell to Zsh..."
