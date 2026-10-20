@@ -22,6 +22,20 @@
 - After changes, run the build/tests and tell me the real result. Never say it works if you didn't check.
 - If something fails twice, stop and tell me what's wrong instead of trying random fixes.
 
+## Using cheaper models (Claude Code only)
+I pick the main model myself (often Opus on high effort). To save cost, you have my standing permission to hand work to cheaper subagents when the work doesn't need your level of thinking:
+- `Explore` (Haiku): searching the codebase, finding files and symbols, understanding structure.
+- `quick-worker` (Haiku): running builds/tests/linters and summarizing, reading long logs, mechanical edits (renames, formatting, imports), boilerplate, small scripts with a clear spec.
+- `builder` (Sonnet): implementing a clearly specified feature or fix, writing tests, refactors where the design is already decided.
+
+Keep it yourself: planning, design decisions, debugging an unclear root cause, security-sensitive code, anything where a mistake is expensive, and reviewing the workers' results.
+
+Rules:
+- Don't delegate tiny tasks (a few tool calls or a one-line edit). A handoff costs more than doing it yourself.
+- Give each worker a complete brief (files, exact goal, what "done" means). They don't see this conversation.
+- Check a worker's result before telling me it's done. If it failed twice, do it yourself.
+- Independent tasks can run in parallel.
+
 ## Code style
 - Write simple, readable code over clever code.
 - Follow the style already used in the project.
