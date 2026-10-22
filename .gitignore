@@ -1,4 +1,4 @@
 herdr/.config/herdr/*.log
 herdr/.config/herdr/session.json
 herdr/.config/herdr/release-notes.json
-herdr/.config/herdr/config.toml.bak.1789307780
+herdr/.config/herdr/config.toml.bak*

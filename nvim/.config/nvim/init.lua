@@ -1,6 +1,6 @@
 -- lazy.nvim bootstrap
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
+if not vim.uv.fs_stat(lazypath) then
   vim.fn.system({
     "git",
     "clone",
@@ -25,11 +25,7 @@ require("zaki.remap")
 
 -- plugins
 require("lazy").setup("zaki.plugins")
--- Remove borders from all LSP floating windows
-vim.lsp.handlers["textDocument/hover"] =
-  vim.lsp.with(vim.lsp.handlers.hover, { border = "none" })
-
-vim.lsp.handlers["textDocument/signatureHelp"] =
-  vim.lsp.with(vim.lsp.handlers.signature_help, { border = "none" })
+-- Remove borders from all floating windows (LSP hover, signature help, ...)
+vim.o.winborder = "none"
 
 

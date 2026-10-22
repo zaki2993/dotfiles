@@ -145,10 +145,10 @@ export TERMINAL=ghostty
 # Generated for envman. Do not edit.
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
 
-. "$HOME/.local/share/../bin/env"
+[ -f "$HOME/.local/bin/env" ] && . "$HOME/.local/bin/env"
 
 # opencode
-export PATH=/home/zakarch/.opencode/bin:$PATH
+export PATH="$HOME/.opencode/bin:$PATH"
 
-# Pi
-export PATH="/home/zakarch/.local/share/mise/installs/node/26.7.0/bin:$PATH"
+# Pi, node and other mise tools (shims don't break when versions change)
+export PATH="$HOME/.local/share/mise/shims:$PATH"

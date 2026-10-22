@@ -38,6 +38,11 @@ if [ ! -e "$OC" ]; then
   echo "created $OC"
 elif grep -q '~/.config/agents/AGENTS.md' "$OC"; then
   echo "ok      $OC"
+elif jq -e . "$OC" >/dev/null 2>&1; then
+  # Omarchy ships its own opencode.json, so add our line to it
+  cp "$OC" "$OC.bak"
+  jq '.instructions = ((.instructions // []) + ["~/.config/agents/AGENTS.md"])' "$OC.bak" > "$OC"
+  echo "updated $OC (backup $OC.bak)"
 else
   echo "todo    add this to $OC:"
   echo '        "instructions": ["~/.config/agents/AGENTS.md"],'

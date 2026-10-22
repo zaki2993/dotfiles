@@ -1,10 +1,11 @@
 #!/bin/bash
+set -e  # stop at the first error instead of carrying on half-installed
 
 # 1. Install all system, terminal, and development packages
 echo "Installing packages..."
 sudo env OMARCHY_ALLOW_DIRECT_PACMAN=1 pacman -Syu --needed \
   zsh stow keyd neovim pyenv fzf fastfetch curl git \
-  unzip wget npm jdk-openjdk go python python-pip
+  unzip wget npm jdk-openjdk go python python-pip ghostty
 
 # 2. Install Oh My Zsh directly via Git (Bulletproof method)
 echo "Installing Oh My Zsh..."

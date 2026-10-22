@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e  # stop on the first error so a broken setup never reaches the reboot
 
 # 1. Fix the Line 100 error (Creates an empty dummy file)
 echo "Fixing missing bin/env file..."
@@ -7,7 +8,7 @@ touch ~/.local/bin/env
 
 # 2. Delete defaults to prevent Stow conflicts
 echo "Cleaning up default configurations..."
-rm -rf ~/.config/nvim ~/.local/share/nvim ~/.state/nvim ~/.cache/nvim
+rm -rf ~/.config/nvim ~/.local/share/nvim ~/.local/state/nvim ~/.cache/nvim
 rm -rf ~/.config/herdr ~/.config/hypr/bindings.lua
 rm -f ~/.zshrc
 
