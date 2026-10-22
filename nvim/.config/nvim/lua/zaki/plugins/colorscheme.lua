@@ -47,6 +47,8 @@ vim.api.nvim_create_autocmd("ColorScheme", {
 vim.api.nvim_create_autocmd("User", {
   pattern = "LazyDone",
   once = true,
+  -- let ColorScheme autocmds run (transparency, lualine refresh)
+  nested = true,
   callback = function()
     load_theme()
   end,

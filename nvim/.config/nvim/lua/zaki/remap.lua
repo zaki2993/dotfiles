@@ -19,10 +19,6 @@ map("i", "<Esc>", "<Esc>l", opts)
 map("n", "<C-j>", "<C-d>", opts)
 map("n", "<C-k>", "<C-u>", opts)
 
--- Jump history
-map("n", "<C-o>", "<C-o>", opts)
-map("n", "<C-i>", "<C-i>", opts)
-
 -- Start/end of file
 map({ "n", "v" }, "gg", "gg0", opts)
 map({ "n", "v" }, "G", "G$", opts)

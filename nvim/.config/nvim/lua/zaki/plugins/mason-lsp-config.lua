@@ -9,6 +9,7 @@ return {
         "clangd",     -- C / C++
         "intelephense", -- PHP
         "gopls",      -- Go
+        "ts_ls",      -- JavaScript / TypeScript
       },
     })
   end,

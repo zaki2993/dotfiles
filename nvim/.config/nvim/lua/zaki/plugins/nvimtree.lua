@@ -10,42 +10,66 @@ return {
     require("nvim-tree").setup({
       hijack_netrw = true,
       view = {
-        width = 30,
+        width = 32,
         side = "left",
       },
 
       renderer = {
         group_empty = true,
-        highlight_git = true,
+        root_folder_label = function(path)
+          return "󰝰 " .. vim.fn.fnamemodify(path, ":~")
+        end,
+        highlight_git = "name",
+        highlight_diagnostics = "name",
+        highlight_opened_files = "name",
+        indent_markers = {
+          enable = true,
+        },
         icons = {
+          git_placement = "right_align",
+          modified_placement = "right_align",
+          diagnostics_placement = "signcolumn",
           show = {
             file = true,
             folder = true,
-            folder_arrow = true,
+            folder_arrow = false,
             git = true,
+            modified = true,
+            diagnostics = true,
           },
-          -- optional: explicit glyphs (fallback to web-devicons if available)
           glyphs = {
-            default = "",
-            symlink = "",
+            default = "󰈔",
+            symlink = "󰌷",
+            modified = "●",
             git = {
-              unstaged = "✗",
-              staged = "✓",
-              unmerged = "",
-              renamed = "➜",
-              untracked = "★",
-              deleted = "",
+              unstaged = "󰏫",
+              staged = "󰄬",
+              unmerged = "󰘬",
+              renamed = "󰁕",
+              untracked = "󰎔",
+              deleted = "󰆴",
               ignored = "◌",
             },
             folder = {
-              default = "",
-              open = "",
-              empty = "",
-              empty_open = "",
-              symlink = "",
+              default = "󰉋",
+              open = "󰝰",
+              empty = "󰉖",
+              empty_open = "󰷏",
+              symlink = "󰉒",
+              symlink_open = "󰉒",
             },
           },
         },
+      },
+
+      diagnostics = {
+        enable = true,
+        show_on_dirs = true,
+        icons = { error = "󰅚", warning = "󰀪", info = "󰋽", hint = "󰌶" },
+      },
+
+      modified = {
+        enable = true,
       },
 
       update_focused_file = {
@@ -65,6 +89,18 @@ return {
       -- keep tree behavior conservative (do not change your cwd unexpectedly)
       respect_buf_cwd = false,
     })
+
+    -- Transparent tree that blends with the editor; re-applied on theme change
+    local function tree_highlights()
+      for _, group in ipairs({ "NvimTreeNormal", "NvimTreeNormalNC", "NvimTreeEndOfBuffer", "NvimTreeSignColumn" }) do
+        vim.api.nvim_set_hl(0, group, { bg = "none" })
+      end
+      vim.api.nvim_set_hl(0, "NvimTreeWinSeparator", { link = "Comment" })
+      vim.api.nvim_set_hl(0, "NvimTreeIndentMarker", { link = "Comment" })
+      vim.api.nvim_set_hl(0, "NvimTreeRootFolder", { link = "Title", bold = true })
+    end
+    tree_highlights()
+    vim.api.nvim_create_autocmd("ColorScheme", { callback = tree_highlights })
 
     -- toggle mapping
     vim.keymap.set("n", "<leader>pv", "<cmd>NvimTreeToggle<CR>", { desc = "File tree" })

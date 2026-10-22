@@ -12,7 +12,7 @@ local workspace = vim.fn.stdpath("data")
   .. vim.fn.fnamemodify(root_dir, ":p:h:t")
 
 local config = {
-  cmd = { "jdtls" },
+  cmd = { "jdtls", "-data", workspace },
   root_dir = root_dir,
   settings = {
     java = {

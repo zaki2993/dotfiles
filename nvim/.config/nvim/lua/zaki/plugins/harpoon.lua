@@ -20,9 +20,8 @@ return {
     end, { desc = "Harpoon Menu" })
 
     -- Go to files 1-4
-    map("n", "<C-u>", function() harpoon:list():select(1) end)
-    map("n", "<C-i>", function() harpoon:list():select(2) end)
-    map("n", "<C-o>", function() harpoon:list():select(3) end)
-    map("n", "<C-p>", function() harpoon:list():select(4) end)
+    for i = 1, 4 do
+      map("n", "<leader>" .. i, function() harpoon:list():select(i) end, { desc = "Harpoon File " .. i })
+    end
   end,
 }
