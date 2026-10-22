@@ -14,8 +14,27 @@ rm -f ~/.zshrc
 # 3. Create shortcuts using Stow
 echo "Stowing configurations..."
 cd ~/dotfiles
-stow nvim herdr zsh hypr agents
+# Make the plugins folder first so stow links each plugin, not the whole folder
+mkdir -p ~/.config/omarchy/plugins
+stow nvim herdr zsh hypr agents omarchy-plugins
 ~/.config/agents/link.sh
+
+# 3b. Omarchy bar: plugins that live in their own repos, then the bar layout
+echo "Setting up the Omarchy bar..."
+plugins=(
+  "zakarch.islands https://github.com/zaki2993/zakarch.islands.git"
+  "zakarch.prism https://github.com/zaki2993/zakarch.prism.git"
+  "zakarch.agents https://github.com/zaki2993/Agents.git"
+  "zakarch.notepad https://github.com/zaki2993/notes.git"
+  "zakarch.space https://github.com/zaki2993/zakarch.space.git"
+)
+for entry in "${plugins[@]}"; do
+  read -r id url <<< "$entry"
+  [[ -d ~/.config/omarchy/plugins/$id ]] || omarchy plugin add "$url" --yes
+done
+# Copied, not stowed: omarchy rewrites shell.json and would replace a symlink
+[[ -f ~/.config/omarchy/shell.json ]] && cp ~/.config/omarchy/shell.json ~/.config/omarchy/shell.json.bak
+cp ~/dotfiles/omarchy/shell.json ~/.config/omarchy/shell.json
 
 # 4. Make Zsh the default shell
 echo "Changing default shell to Zsh..."

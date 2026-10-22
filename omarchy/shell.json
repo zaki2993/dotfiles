@@ -1,0 +1,103 @@
+{
+  "bar": {
+    "centerAnchor": "omarchy.clock",
+    "layout": {
+      "center": [
+        {
+          "id": "omarchy.indicators"
+        },
+        {
+          "format": "ddd HH:mm",
+          "formatAlt": "d MMMM 'W'ww yyyy",
+          "id": "omarchy.clock",
+          "verticalFormat": "HH\n—\nmm"
+        },
+        {
+          "id": "omarchy.keyboard-layout"
+        },
+        {
+          "id": "zakarch.weather"
+        },
+        {
+          "id": "omarchy.system-update"
+        }
+      ],
+      "left": [
+        {
+          "id": "omarchy.menu"
+        },
+        {
+          "id": "zakarch.islands"
+        }
+      ],
+      "right": [
+        {
+          "id": "omarchy.tray"
+        },
+        {
+          "id": "zakarch.prism"
+        },
+        {
+          "id": "zakarch.notepad"
+        },
+        {
+          "id": "zakarch.space",
+          "showFreeSpace": "Off"
+        },
+        {
+          "id": "zakarch.agents",
+          "providers": {
+            "claude": {
+              "enabled": true
+            },
+            "codex": {
+              "enabled": true
+            },
+            "fireworks": {
+              "enabled": false
+            },
+            "gemini": {
+              "enabled": false
+            },
+            "hermes": {
+              "enabled": false
+            },
+            "kimi": {
+              "enabled": false
+            },
+            "opencode": {
+              "enabled": true
+            },
+            "pi": {
+              "enabled": false
+            }
+          }
+        },
+        {
+          "id": "zakarch.audio"
+        },
+        {
+          "id": "zakarch.monitor"
+        },
+        {
+          "id": "zakarch.power",
+          "showPercentage": false
+        },
+        {
+          "id": "zakarch.network"
+        }
+      ]
+    },
+    "position": "top",
+    "transparent": false
+  },
+  "disabledPlugins": [
+    "omarchy.digital-tomato",
+    "omarchy.reminders"
+  ],
+  "idle": {
+    "lock": 7000,
+    "screensaver": 3000
+  },
+  "version": 1
+}
