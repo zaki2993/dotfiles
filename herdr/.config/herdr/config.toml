@@ -121,6 +121,120 @@ key = "prefix+ç"
 type = "shell"
 command = "~/.config/herdr/focus-tab.sh 9"
 
+# Harpoon: prefix+a marks the tab, prefix+y opens the list,
+# prefix+alt+1..0 jumps to mark 1..10 (AZERTY &é"'(-è_çà works too)
+[[keys.command]]
+key = "prefix+a"
+type = "shell"
+command = "~/.config/herdr/harpoon.sh add"
+
+[[keys.command]]
+key = "prefix+y"
+type = "popup"
+command = "~/.config/herdr/harpoon.sh menu"
+width = "50%"
+height = 15
+
+[[keys.command]]
+key = "prefix+alt+1"
+type = "shell"
+command = "~/.config/herdr/harpoon.sh go 1"
+
+[[keys.command]]
+key = "prefix+alt+&"
+type = "shell"
+command = "~/.config/herdr/harpoon.sh go 1"
+
+[[keys.command]]
+key = "prefix+alt+2"
+type = "shell"
+command = "~/.config/herdr/harpoon.sh go 2"
+
+[[keys.command]]
+key = "prefix+alt+é"
+type = "shell"
+command = "~/.config/herdr/harpoon.sh go 2"
+
+[[keys.command]]
+key = "prefix+alt+3"
+type = "shell"
+command = "~/.config/herdr/harpoon.sh go 3"
+
+[[keys.command]]
+key = "prefix+alt+\""
+type = "shell"
+command = "~/.config/herdr/harpoon.sh go 3"
+
+[[keys.command]]
+key = "prefix+alt+4"
+type = "shell"
+command = "~/.config/herdr/harpoon.sh go 4"
+
+[[keys.command]]
+key = "prefix+alt+'"
+type = "shell"
+command = "~/.config/herdr/harpoon.sh go 4"
+
+[[keys.command]]
+key = "prefix+alt+5"
+type = "shell"
+command = "~/.config/herdr/harpoon.sh go 5"
+
+[[keys.command]]
+key = "prefix+alt+("
+type = "shell"
+command = "~/.config/herdr/harpoon.sh go 5"
+
+[[keys.command]]
+key = "prefix+alt+6"
+type = "shell"
+command = "~/.config/herdr/harpoon.sh go 6"
+
+[[keys.command]]
+key = "prefix+alt+-"
+type = "shell"
+command = "~/.config/herdr/harpoon.sh go 6"
+
+[[keys.command]]
+key = "prefix+alt+7"
+type = "shell"
+command = "~/.config/herdr/harpoon.sh go 7"
+
+[[keys.command]]
+key = "prefix+alt+è"
+type = "shell"
+command = "~/.config/herdr/harpoon.sh go 7"
+
+[[keys.command]]
+key = "prefix+alt+8"
+type = "shell"
+command = "~/.config/herdr/harpoon.sh go 8"
+
+[[keys.command]]
+key = "prefix+alt+_"
+type = "shell"
+command = "~/.config/herdr/harpoon.sh go 8"
+
+[[keys.command]]
+key = "prefix+alt+9"
+type = "shell"
+command = "~/.config/herdr/harpoon.sh go 9"
+
+[[keys.command]]
+key = "prefix+alt+ç"
+type = "shell"
+command = "~/.config/herdr/harpoon.sh go 9"
+
+[[keys.command]]
+key = "prefix+alt+0"
+type = "shell"
+command = "~/.config/herdr/harpoon.sh go 10"
+
+[[keys.command]]
+key = "prefix+alt+à"
+type = "shell"
+command = "~/.config/herdr/harpoon.sh go 10"
+
 [ui]
 accent = "blue"
 
