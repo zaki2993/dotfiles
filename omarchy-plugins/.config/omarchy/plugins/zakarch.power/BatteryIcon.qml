@@ -2,7 +2,7 @@ import QtQuick
 import QtQuick.Shapes
 
 // Bar glyph: a sideways battery whose fill matches the real charge.
-// A bolt sits on top while charging; the fill turns urgent when low.
+// The terminal nub turns red while charging; the fill turns red when low.
 Item {
   id: root
 
@@ -32,7 +32,7 @@ Item {
     x: 14.3 * root.s; y: 6.5 * root.s
     width: 1.3 * root.s; height: 3 * root.s
     radius: 0.6 * root.s
-    color: root.color
+    color: root.charging ? root.lowColor : root.color
   }
 
   // charge fill
@@ -42,24 +42,5 @@ Item {
     width: Math.max(root.level > 0 ? 1 * root.s : 0, 8.9 * root.s * Math.max(0, Math.min(1, root.level)))
     radius: 0.8 * root.s
     color: root.fillColor
-    opacity: root.charging ? 0.45 : 1
-  }
-
-  // bolt
-  Shape {
-    anchors.fill: parent
-    visible: root.charging
-    preferredRendererType: Shape.CurveRenderer
-    ShapePath {
-      strokeColor: "transparent"
-      fillColor: root.color
-      startX: 8.3 * root.s; startY: 5.6 * root.s
-      PathLine { x: 5.6 * root.s; y: 8.4 * root.s }
-      PathLine { x: 7.4 * root.s; y: 8.4 * root.s }
-      PathLine { x: 6.9 * root.s; y: 10.4 * root.s }
-      PathLine { x: 9.6 * root.s; y: 7.6 * root.s }
-      PathLine { x: 7.8 * root.s; y: 7.6 * root.s }
-      PathLine { x: 8.3 * root.s; y: 5.6 * root.s }
-    }
   }
 }
