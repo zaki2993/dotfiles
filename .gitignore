@@ -2,3 +2,4 @@ herdr/.config/herdr/*.log
 herdr/.config/herdr/session.json
 herdr/.config/herdr/release-notes.json
 herdr/.config/herdr/config.toml.bak*
+herdr/.config/herdr/session-snapshots/
