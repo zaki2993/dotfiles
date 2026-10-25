@@ -230,6 +230,40 @@ Panel {
 
   Timer { interval: 5000; running: root.opened; repeat: true; onTriggered: root.refresh() }
 
+  // Loud alerts at 20% (on battery) and 90% (plugged in). Each fires once,
+  // then re-arms after the level or power source moves back.
+  property bool notifiedLow: false
+  property bool notifiedHigh: false
+
+  function checkAlerts() {
+    if (!batteryPresent) return
+    var level = Math.round(batteryFraction * 100)
+
+    if (discharging && level <= 20) {
+      if (!notifiedLow) shout("critical", "Battery low", level + "% left. Plug in the charger.")
+      notifiedLow = true
+    } else notifiedLow = false
+
+    if (!UPower.onBattery && level >= 90) {
+      if (!notifiedHigh) shout("normal", "Battery at " + level + "%", "You can unplug the charger.")
+      notifiedHigh = true
+    } else notifiedHigh = false
+  }
+
+  function shout(urgency, title, body) {
+    alertProc.command = ["omarchy-notification-send", "-g", "󱐋", "-u", urgency, "-t", "30000", title, body]
+    alertProc.running = true
+  }
+
+  Process { id: alertProc }
+
+  Timer { interval: 30000; running: true; repeat: true; triggeredOnStart: true; onTriggered: root.checkAlerts() }
+
+  Connections {
+    target: UPower
+    function onOnBatteryChanged() { root.checkAlerts() }
+  }
+
   // Rotate the status phrase while the panel is open and we're in a
   // rotating state (charging or on battery). The text swap is wrapped in a
   // fade so the changeover reads as one organism rather than a hard cut.
