@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "id": "zakarch.loom",
+  "name": "Loom",
+  "version": "1.0.0",
+  "author": "zakaryae",
+  "license": "MIT",
+  "description": "Plan your week and days around your goals. Each goal is a colored thread, and the week's loom fills in as you finish tasks.",
+  "kinds": ["service", "bar-widget"],
+  "entryPoints": {
+    "service": "Service.qml",
+    "barWidget": "BarWidget.qml"
+  },
+  "barWidget": {
+    "displayName": "Loom",
+    "description": "Weekly and daily planner with goals woven in",
+    "category": "Productivity",
+    "defaultSection": "right",
+    "allowMultiple": false,
+    "aliases": ["planner", "week", "goals", "tasks", "todo"]
+  }
+}

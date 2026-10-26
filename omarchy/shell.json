@@ -38,6 +38,12 @@
           "id": "zakarch.prism"
         },
         {
+          "id": "zakarch.fight-bell"
+        },
+        {
+          "id": "zakarch.loom"
+        },
+        {
           "id": "zakarch.notepad"
         },
         {
@@ -74,6 +80,15 @@
           }
         },
         {
+          "id": "zakarch.digital-tomato"
+        },
+        {
+          "id": "zakarch.timer"
+        },
+        {
+          "id": "nzkritik.desktop-hue"
+        },
+        {
           "id": "zakarch.audio"
         },
         {
@@ -91,6 +106,10 @@
     "position": "top",
     "transparent": false
   },
+  "cloneSourceRestores": [
+    "zakarch.digital-tomato",
+    "zakarch.reminders"
+  ],
   "disabledPlugins": [
     "omarchy.digital-tomato",
     "omarchy.reminders"
@@ -99,5 +118,22 @@
     "lock": 7000,
     "screensaver": 3000
   },
+  "plugins": [
+    {
+      "id": "zakarch.timer"
+    },
+    {
+      "id": "zakarch.reminders"
+    },
+    {
+      "id": "zakarch.notes"
+    },
+    {
+      "id": "zakarch.live-wallpaper"
+    },
+    {
+      "id": "zaki2993.nudge"
+    }
+  ],
   "version": 1
 }
