@@ -6,20 +6,57 @@ autoload -Uz vcs_info
 autoload -Uz colors && colors
 autoload -Uz add-zsh-hook
 zmodload zsh/datetime
+zmodload -F zsh/stat b:zstat
 setopt PROMPT_SUBST
 
 # Keep custom prompt (oh-my-zsh sources after this block)
 ZSH_THEME=""
 
 zstyle ':vcs_info:git:*' check-for-changes true
-zstyle ':vcs_info:git:*' stagedstr ' %F{#9ece6a}+%F{#bb9af7}'
-zstyle ':vcs_info:git:*' unstagedstr ' %F{#e0af68}~%F{#bb9af7}'
-zstyle ':vcs_info:git:*' formats ' %F{#292e42}%K{#292e42}%F{#bb9af7} 󰊢 %b%c%u %k%F{#292e42}%f'
-zstyle ':vcs_info:git:*' actionformats ' %F{#292e42}%K{#292e42}%F{#bb9af7} 󰊢 %b%c%u %F{#f7768e}· %a %k%F{#292e42}%f'
 zstyle ':vcs_info:*' enable git
 
+typeset -gA _dotfiles_prompt_c
+typeset -g _dotfiles_prompt_theme_stamp=-
+
+# Take prompt colors from the current Omarchy theme so it fits light and dark themes
+_dotfiles_prompt_load_theme() {
+  local dir=$HOME/.local/state/omarchy/current/theme stamp='' line
+  local -A t
+  [[ -d $dir ]] && zstat -A stamp +mtime $dir
+  [[ $stamp == "$_dotfiles_prompt_theme_stamp" ]] && return
+  _dotfiles_prompt_theme_stamp=$stamp
+
+  if [[ -r $dir/colors.toml ]]; then
+    while IFS= read -r line; do
+      [[ $line =~ '^([a-z_]+) *= *"([^"]*)"' ]] && t[$match[1]]=$match[2]
+    done < $dir/colors.toml
+  fi
+
+  # Pill background: a bit lighter than the terminal on dark themes, a bit darker on light ones
+  local surface=${t[lighter_background]:-#292e42}
+  [[ $t[mode] == light ]] && surface=${t[darker_background]:-$surface}
+
+  # Fallbacks are Tokyo Night
+  _dotfiles_prompt_c=(
+    surface $surface
+    muted   ${t[muted]:-#565f89}
+    text    ${t[foreground]:-#a9b1d6}
+    blue    ${t[blue]:-#7aa2f7}
+    cyan    ${t[cyan]:-#7dcfff}
+    magenta ${t[magenta]:-#bb9af7}
+    green   ${t[green]:-#9ece6a}
+    yellow  ${t[yellow]:-#e0af68}
+    red     ${t[red]:-#f7768e}
+  )
+
+  zstyle ':vcs_info:git:*' stagedstr " %F{${_dotfiles_prompt_c[green]}}+%F{${_dotfiles_prompt_c[magenta]}}"
+  zstyle ':vcs_info:git:*' unstagedstr " %F{${_dotfiles_prompt_c[yellow]}}~%F{${_dotfiles_prompt_c[magenta]}}"
+  zstyle ':vcs_info:git:*' formats " %F{${_dotfiles_prompt_c[surface]}}%K{${_dotfiles_prompt_c[surface]}}%F{${_dotfiles_prompt_c[magenta]}} 󰊢 %b%c%u %k%F{${_dotfiles_prompt_c[surface]}}%f"
+  zstyle ':vcs_info:git:*' actionformats " %F{${_dotfiles_prompt_c[surface]}}%K{${_dotfiles_prompt_c[surface]}}%F{${_dotfiles_prompt_c[magenta]}} 󰊢 %b%c%u %F{${_dotfiles_prompt_c[red]}}· %a %k%F{${_dotfiles_prompt_c[surface]}}%f"
+}
+
 typeset -g _dotfiles_prompt_started='' _dotfiles_prompt_meta=''
-typeset -g _dotfiles_prompt_color='#7dcfff'
+typeset -g _dotfiles_prompt_color=''
 
 _dotfiles_prompt_preexec() {
   _dotfiles_prompt_started=$EPOCHSECONDS
@@ -27,12 +64,13 @@ _dotfiles_prompt_preexec() {
 
 _dotfiles_prompt_precmd() {
   local last_status=$? elapsed minutes seconds
+  _dotfiles_prompt_load_theme
   _dotfiles_prompt_meta=''
-  _dotfiles_prompt_color='#7dcfff'
+  _dotfiles_prompt_color=$_dotfiles_prompt_c[cyan]
 
   if (( last_status != 0 )); then
-    _dotfiles_prompt_color='#f7768e'
-    _dotfiles_prompt_meta="%F{#f7768e}✕ ${last_status}%f %F{#565f89}·%f "
+    _dotfiles_prompt_color=$_dotfiles_prompt_c[red]
+    _dotfiles_prompt_meta="%F{${_dotfiles_prompt_c[red]}}✕ ${last_status}%f %F{${_dotfiles_prompt_c[muted]}}·%f "
   fi
 
   if [[ -n $_dotfiles_prompt_started ]]; then
@@ -41,11 +79,11 @@ _dotfiles_prompt_precmd() {
       minutes=$(( elapsed / 60 ))
       seconds=$(( elapsed % 60 ))
       if (( minutes > 0 )); then
-        _dotfiles_prompt_meta+="%F{#e0af68} ${minutes}m ${seconds}s%f "
+        _dotfiles_prompt_meta+="%F{${_dotfiles_prompt_c[yellow]}} ${minutes}m ${seconds}s%f "
       else
-        _dotfiles_prompt_meta+="%F{#e0af68} ${seconds}s%f "
+        _dotfiles_prompt_meta+="%F{${_dotfiles_prompt_c[yellow]}} ${seconds}s%f "
       fi
-      _dotfiles_prompt_meta+='%F{#565f89}·%f '
+      _dotfiles_prompt_meta+="%F{${_dotfiles_prompt_c[muted]}}·%f "
     fi
   fi
 
@@ -58,9 +96,9 @@ add-zsh-hook -d precmd _dotfiles_prompt_precmd
 add-zsh-hook preexec _dotfiles_prompt_preexec
 add-zsh-hook precmd _dotfiles_prompt_precmd
 
-PROMPT=$'\n''%F{#565f89}╭─%f%F{#292e42}%K{#292e42}%F{#7aa2f7}%B 󰉋 %4~ %b%k%F{#292e42}%f${vcs_info_msg_0_}
-%F{#565f89}╰─%f %(#.%F{#f7768e}#.%F{${_dotfiles_prompt_color}}❯)%f %b%k'
-RPROMPT='${_dotfiles_prompt_meta}%F{#565f89} %F{#a9b1d6}%D{%H:%M}%f'
+PROMPT=$'\n''%F{${_dotfiles_prompt_c[muted]}}╭─%f%F{${_dotfiles_prompt_c[surface]}}%K{${_dotfiles_prompt_c[surface]}}%F{${_dotfiles_prompt_c[blue]}}%B 󰉋 %4~ %b%k%F{${_dotfiles_prompt_c[surface]}}%f${vcs_info_msg_0_}
+%F{${_dotfiles_prompt_c[muted]}}╰─%f %(#.%F{${_dotfiles_prompt_c[red]}}#.%F{${_dotfiles_prompt_color}}❯)%f %b%k'
+RPROMPT='${_dotfiles_prompt_meta}%F{${_dotfiles_prompt_c[muted]}} %F{${_dotfiles_prompt_c[text]}}%D{%H:%M}%f'
 # ---------- Oh My Zsh ----------
 export ZSH="$HOME/.oh-my-zsh"
 
