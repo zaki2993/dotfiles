@@ -238,9 +238,10 @@ command = "~/.config/herdr/harpoon.sh go 10"
 [ui]
 accent = "blue"
 
-# tmux drew single-line dividers between adjacent panes and no outer frame
-pane_gaps = false
-pane_outer_borders = false
+# Floating panes, like the islands on the top bar
+pane_gaps = true
+pane_outer_borders = true
+pane_borders = "always"
 
 # tmux had no scrollbar column beside its panes
 pane_scrollbars = false
