@@ -14,15 +14,6 @@ chmod +x install.sh config.sh
 
 That's it. `config.sh` reboots the machine at the end.
 
-## Server (Ubuntu/Debian)
-
-Just the shell: zsh, history, completion, prompt with `user@host`, autosuggestions,
-syntax highlighting, fzf and my aliases. No Oh My Zsh, no fonts needed.
-
-```bash
-curl -fsSL https://raw.githubusercontent.com/zaki2993/dotfiles/main/server/install.sh | bash
-```
-
 ## What the scripts do
 
 **`install.sh`** – installs packages
