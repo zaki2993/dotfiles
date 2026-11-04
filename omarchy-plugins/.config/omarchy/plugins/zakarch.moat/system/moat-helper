@@ -1,0 +1,247 @@
+#!/usr/bin/env python3
+# Moat system lock. Runs as root from moat.timer and moat.path.
+#
+# Reads the rules the user wants (written by the shell plugin), adopts them
+# unless that would loosen a running block, handles the once-a-day emergency
+# pass, and writes the blocked sites into /etc/hosts.
+# The schedule rules mirror Model.js in the plugin; keep both in sync.
+
+import argparse
+import datetime
+import json
+import os
+import re
+import sys
+import tempfile
+import time
+
+MARK_START = "# >>> moat: managed by zakarch.moat, edits here are overwritten"
+MARK_END = "# <<< moat"
+DOMAIN_RE = re.compile(r"(?=.{1,253}$)([a-z0-9-]{1,63}\.)+[a-z]{2,63}")
+TIME_RE = re.compile(r"([01]\d|2[0-3]):[0-5]\d")
+PREFIXES = ("", "www.", "m.", "mobile.")
+MAX_SITES = 200
+MAX_BLOCKS = 50
+WAIT_MS = 10 * 60 * 1000
+OPEN_MS = 15 * 60 * 1000
+
+
+def load(path):
+    try:
+        with open(path) as f:
+            return json.load(f)
+    except (OSError, ValueError):
+        return None
+
+
+def write_atomic(path, text, mode=0o644):
+    fd, tmp = tempfile.mkstemp(dir=os.path.dirname(path), prefix=".moat-")
+    try:
+        with os.fdopen(fd, "w") as f:
+            f.write(text)
+        os.chmod(tmp, mode)
+        os.replace(tmp, path)
+    except BaseException:
+        os.unlink(tmp)
+        raise
+
+
+def clean_sites(raw):
+    out = []
+    for s in raw if isinstance(raw, list) else []:
+        if len(out) >= MAX_SITES:
+            break
+        if isinstance(s, str) and DOMAIN_RE.fullmatch(s) and s not in out:
+            out.append(s)
+    return out
+
+
+def block_key(b):
+    return "".join(map(str, b["days"])) + "@" + b["start"] + "-" + b["end"]
+
+
+def clean_blocks(raw):
+    out, seen = [], set()
+    for b in raw if isinstance(raw, list) else []:
+        if len(out) >= MAX_BLOCKS:
+            break
+        if not isinstance(b, dict) or not isinstance(b.get("days"), list):
+            continue
+        start, end = b.get("start"), b.get("end")
+        if not isinstance(start, str) or not isinstance(end, str):
+            continue
+        if not TIME_RE.fullmatch(start) or not TIME_RE.fullmatch(end) or start == end:
+            continue
+        days = [d for d in range(7) if any(type(x) is int and x == d for x in b["days"])]
+        if not days:
+            continue
+        clean = {"days": days, "start": start, "end": end}
+        if block_key(clean) in seen:
+            continue
+        seen.add(block_key(clean))
+        out.append(clean)
+    return out
+
+
+def to_min(t):
+    h, m = t.split(":")
+    return int(h) * 60 + int(m)
+
+
+def in_block_min(blocks, day, minute):
+    prev = (day + 6) % 7
+    for b in blocks:
+        s, e = to_min(b["start"]), to_min(b["end"])
+        if s < e:
+            if day in b["days"] and s <= minute < e:
+                return True
+        else:
+            if day in b["days"] and minute >= s:
+                return True
+            if prev in b["days"] and minute < e:
+                return True
+    return False
+
+
+def in_block(blocks, ts):
+    d = datetime.datetime.fromtimestamp(ts)
+    return in_block_min(blocks, d.weekday(), d.hour * 60 + d.minute)
+
+
+def has_free_time(blocks):
+    return any(not in_block_min(blocks, day, m) for day in range(7) for m in range(1440))
+
+
+def is_stricter(next_sites, next_blocks, sites, blocks):
+    keys = {block_key(b) for b in next_blocks}
+    return all(s in next_sites for s in sites) and all(block_key(b) in keys for b in blocks)
+
+
+def step_pass(current, request, active, used_day, now, today):
+    """Returns (pass, used_day). Times are ms. The pass counts once it opens."""
+    req_id = request.get("id") if isinstance(request, dict) else None
+    if not isinstance(req_id, str) or not req_id:
+        req_id = None
+    if current and current.get("id") != req_id:
+        current = None  # the user cancelled or replaced the request
+    if req_id and not current:
+        if not active:
+            current = {"id": req_id, "state": "unused"}
+        elif used_day == today:
+            current = {"id": req_id, "state": "denied"}
+        else:
+            current = {"id": req_id, "state": "waiting", "from": now + WAIT_MS, "until": now + WAIT_MS + OPEN_MS}
+    if current and current["state"] == "waiting":
+        if not active:
+            current = {"id": req_id, "state": "unused"}
+        elif now >= current["from"]:
+            current["state"] = "open"
+            used_day = today
+    if current and current["state"] == "open" and (now >= current["until"] or not active):
+        current["state"] = "done"
+    return current, used_day
+
+
+def hosts_text(text, sites):
+    kept, inside = [], False
+    for line in text.splitlines():
+        if line == MARK_START:
+            inside = True
+        elif inside and line == MARK_END:
+            inside = False
+        elif not inside:
+            kept.append(line)
+    out = "\n".join(kept).rstrip("\n") + "\n"
+    if sites:
+        lines = [MARK_START]
+        for s in sites:
+            for p in PREFIXES:
+                lines += ["0.0.0.0 " + p + s, ":: " + p + s]
+        out += "\n" + "\n".join(lines + [MARK_END]) + "\n"
+    return out
+
+
+def ms(ts):
+    return int(ts * 1000)
+
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--config", default="/etc/moat/config.json")
+    ap.add_argument("--state", default="/var/lib/moat/status.json")
+    ap.add_argument("--hosts", default="/etc/hosts")
+    ap.add_argument("--now", type=float, help="epoch seconds, for tests")
+    ap.add_argument("--uninstall", action="store_true", help="clear /etc/hosts unless a block is running")
+    args = ap.parse_args()
+
+    now = args.now if args.now is not None else time.time()
+    minute = now - now % 60
+    today = datetime.datetime.fromtimestamp(now).strftime("%Y-%m-%d")
+
+    config = load(args.config)
+    if not isinstance(config, dict):
+        config = {}
+    sites = clean_sites(config.get("sites"))
+    blocks = clean_blocks(config.get("blocks"))
+    active = in_block(blocks, minute)
+
+    try:
+        with open(args.hosts) as f:
+            hosts = f.read()
+    except FileNotFoundError:
+        hosts = ""
+
+    if args.uninstall:
+        if active:
+            print("A block is running. Try again after it ends.", file=sys.stderr)
+            return 1
+        if hosts_text(hosts, []) != hosts:
+            write_atomic(args.hosts, hosts_text(hosts, []), os.stat(args.hosts).st_mode & 0o7777)
+        return 0
+
+    wants_path = config.get("wants")
+    wants = load(wants_path) if isinstance(wants_path, str) and wants_path else None
+    if not isinstance(wants, dict):
+        wants = {}
+
+    held = False
+    if "sites" in wants or "blocks" in wants:
+        w_sites, w_blocks = clean_sites(wants.get("sites")), clean_blocks(wants.get("blocks"))
+        if (w_sites, w_blocks) != (sites, blocks):
+            if has_free_time(w_blocks) and (not active or is_stricter(w_sites, w_blocks, sites, blocks)):
+                sites, blocks = w_sites, w_blocks
+                config.update(sites=sites, blocks=blocks)
+                write_atomic(args.config, json.dumps(config, indent=2) + "\n")
+                active = in_block(blocks, minute)
+            else:
+                held = True
+
+    state = load(args.state)
+    if not isinstance(state, dict):
+        state = {}
+    current = state.get("pass") if isinstance(state.get("pass"), dict) else None
+    used_day = state.get("lastPassDay") if isinstance(state.get("lastPassDay"), str) else ""
+    current, used_day = step_pass(current, wants.get("unlock"), active, used_day, ms(now), today)
+    blocked = active and not (current and current["state"] == "open")
+
+    wanted_hosts = hosts_text(hosts, sites if blocked else [])
+    if wanted_hosts != hosts:
+        mode = os.stat(args.hosts).st_mode & 0o7777 if os.path.exists(args.hosts) else 0o644
+        write_atomic(args.hosts, wanted_hosts, mode)
+
+    write_atomic(args.state, json.dumps({
+        "version": 1,
+        "updatedAt": ms(now),
+        "sites": sites,
+        "blocks": blocks,
+        "inBlock": active,
+        "blocked": blocked,
+        "held": held,
+        "pass": current,
+        "lastPassDay": used_day,
+    }, indent=2) + "\n")
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

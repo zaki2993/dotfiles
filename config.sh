@@ -37,6 +37,9 @@ done
 [[ -f ~/.config/omarchy/shell.json ]] && cp ~/.config/omarchy/shell.json ~/.config/omarchy/shell.json.bak
 cp ~/dotfiles/omarchy/shell.json ~/.config/omarchy/shell.json
 
+# 3c. Moat: root timer that applies the site block schedule to /etc/hosts
+sudo bash ~/.config/omarchy/plugins/zakarch.moat/system/install.sh
+
 # 4. Make Zsh the default shell
 echo "Changing default shell to Zsh..."
 chsh -s $(which zsh)

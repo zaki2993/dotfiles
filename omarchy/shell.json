@@ -7,16 +7,19 @@
           "id": "omarchy.indicators"
         },
         {
+          "id": "omarchy.keyboard-layout"
+        },
+        {
           "format": "ddd HH:mm",
           "formatAlt": "d MMMM 'W'ww yyyy",
           "id": "omarchy.clock",
           "verticalFormat": "HH\n—\nmm"
         },
         {
-          "id": "omarchy.keyboard-layout"
+          "id": "zakarch.weather"
         },
         {
-          "id": "zakarch.weather"
+          "id": "zakarch.prism"
         },
         {
           "id": "omarchy.system-update"
@@ -35,7 +38,7 @@
           "id": "omarchy.tray"
         },
         {
-          "id": "zakarch.prism"
+          "id": "zakarch.moat"
         },
         {
           "id": "zakarch.fight-bell"

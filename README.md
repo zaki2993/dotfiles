@@ -25,6 +25,7 @@ That's it. `config.sh` reboots the machine at the end.
 - `stow` links each folder below into `~`
 - Connects all coding agents to my shared rules (`link.sh`)
 - Sets up the Omarchy bar: installs my plugins from their repos and copies the bar layout
+- Installs the Moat system lock (root timer that blocks sites in `/etc/hosts` on a schedule)
 - Sets zsh as the default shell
 - Copies the keyd config to `/etc/keyd` and starts keyd
 - Reboots
@@ -39,7 +40,7 @@ That's it. `config.sh` reboots the machine at the end.
 | `herdr`  | `~/.config/herdr`             | herdr config                   |
 | `agents` | `~/.config/agents`            | rules for all coding agents    |
 | `keyd`   | `/etc/keyd` (copied)          | key remapping                  |
-| `omarchy-plugins` | `~/.config/omarchy/plugins` | my clones of Omarchy's battery, sound, display, wifi and weather widgets (drawn icons), and Loom, my week planner |
+| `omarchy-plugins` | `~/.config/omarchy/plugins` | my clones of Omarchy's battery, sound, display, wifi and weather widgets (drawn icons), Loom, my week planner, and Moat, my site blocker |
 | `omarchy` | `~/.config/omarchy/shell.json` (copied) | bar layout          |
 
 Bar plugins with their own repo (Islands, Prism, Agents, Notepad, Space) are
