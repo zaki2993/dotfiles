@@ -28,6 +28,7 @@ plugins=(
   "zakarch.agents https://github.com/zaki2993/Agents.git"
   "zakarch.notepad https://github.com/zaki2993/notes.git"
   "zakarch.space https://github.com/zaki2993/zakarch.space.git"
+  "zakarch.moat https://github.com/zaki2993/zakarch.moat.git"
 )
 for entry in "${plugins[@]}"; do
   read -r id url <<< "$entry"

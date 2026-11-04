@@ -40,10 +40,10 @@ That's it. `config.sh` reboots the machine at the end.
 | `herdr`  | `~/.config/herdr`             | herdr config                   |
 | `agents` | `~/.config/agents`            | rules for all coding agents    |
 | `keyd`   | `/etc/keyd` (copied)          | key remapping                  |
-| `omarchy-plugins` | `~/.config/omarchy/plugins` | my clones of Omarchy's battery, sound, display, wifi and weather widgets (drawn icons), Loom, my week planner, and Moat, my site blocker |
+| `omarchy-plugins` | `~/.config/omarchy/plugins` | my clones of Omarchy's battery, sound, display, wifi and weather widgets (drawn icons), and Loom, my week planner |
 | `omarchy` | `~/.config/omarchy/shell.json` (copied) | bar layout          |
 
-Bar plugins with their own repo (Islands, Prism, Agents, Notepad, Space) are
+Bar plugins with their own repo (Islands, Prism, Agents, Notepad, Space, Moat) are
 installed by `config.sh` with `omarchy plugin add`, not stored here.
 If you change the bar layout, copy it back:
 `cp ~/.config/omarchy/shell.json ~/dotfiles/omarchy/shell.json`
