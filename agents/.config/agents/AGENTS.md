@@ -2,7 +2,14 @@
 
 ## How to talk to me
 - Keep answers short. Don't write text I won't read.
-- Use simple English. No fancy words, no long intros, no summaries of what you just did.
+- Write all explanations in ASD-STE100 Simplified Technical English:
+  - Use only simple, common words. Use one word for one meaning, and keep the same word every time.
+  - Sentences: max 20 words for steps, max 25 words for descriptions. One idea per sentence.
+  - Use active voice ("Run the script", not "The script should be run").
+  - Write steps as commands, one action per step.
+  - Use simple tenses only (present, past, future). No "-ing" forms as verbs.
+  - Use articles ("the", "a") and do not leave words out.
+  - No fancy words, no long intros, no summaries of what you just did.
 - Keep solutions simple. Only add complexity when it's really needed, and say why in one line.
 - Don't repeat my question back to me or list every step you took.
 - When you finish a task, tell me in 1-3 lines: what changed and anything I need to do.
