@@ -73,6 +73,7 @@ test("editing a task changes its text, time and goal", () => {
   const id = s.tasks["2026-10-26"][0].id
   const b = (a, z) => { const r = Model.readBlock(a, z); return r ? r.time + "|" + r.end : null }
   assert.equal(b("18:00", "01:00"), "18:00|01:00", "zero-padded times are taken as typed")
+  assert.equal(b("18:00", "10:00"), "18:00|10:00", "a stored overnight block survives a save")
   assert.equal(b("6", "10"), "18:00|22:00")
   assert.equal(b("9", ""), "09:00|")
   assert.equal(b("", ""), "|")

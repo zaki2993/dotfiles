@@ -236,7 +236,8 @@ function readBlock(start, end) {
   var s = readTime(st, true)
   if (s < 0) return null
   if (!en) return { time: fromMin(s), end: "" }
-  var e = readEnd(en, s)
+  // "HH:MM" is what the editor shows for a stored time, so take it as typed.
+  var e = /^\d\d:\d\d$/.test(en) ? readTime(en, false) : readEnd(en, s)
   if (e < 0 || e % 1440 === s) return null
   return { time: fromMin(s), end: fromMin(e) }
 }
