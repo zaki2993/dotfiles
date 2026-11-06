@@ -17,7 +17,7 @@ echo "Stowing configurations..."
 cd ~/dotfiles
 # Make the plugins folder first so stow links each plugin, not the whole folder
 mkdir -p ~/.config/omarchy/plugins
-stow nvim herdr zsh hypr agents omarchy-plugins
+stow nvim herdr zsh hypr agents omarchy-plugins bin
 ~/.config/agents/link.sh
 
 # 3b. Omarchy bar: plugins that live in their own repos, then the bar layout
