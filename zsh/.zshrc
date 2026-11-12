@@ -190,3 +190,6 @@ export PATH="$HOME/.opencode/bin:$PATH"
 
 # Pi, node and other mise tools (shims don't break when versions change)
 export PATH="$HOME/.local/share/mise/shims:$PATH"
+
+# Hermes Agent command
+case ":$PATH:" in *":$HOME/.local/bin:"*) ;; *) export PATH="$HOME/.local/bin:$PATH" ;; esac

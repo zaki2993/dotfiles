@@ -8,8 +8,8 @@ Antigravity keeps its conversations as protobuf blobs, so this collector only
 reads metadata: the CLI's history.jsonl (timestamps, conversation ids and
 whether an entry was a slash command — never the prompt text) and the
 conversation_summaries.db that both the IDE and the CLI maintain (ids, step
-counts and timestamps). Antigravity stores no readable token counts, so the
-record counts prompts per day instead of tokens.
+counts and timestamps). Token counts come from each conversation's
+conversations/<id>.db, whose gen_metadata rows hold per-call usage.
 
 Limits come from `agy -p /usage`, which prints one tab-separated line per
 quota pool and window (Gemini models / Claude and GPT models, five-hour and
@@ -39,6 +39,8 @@ AGENT_NAME = "Antigravity"
 
 GEMINI_HOME = Path(os.environ.get("GEMINI_HOME") or Path.home() / ".gemini")
 APP_DIRS = [GEMINI_HOME / "antigravity-cli", GEMINI_HOME / "antigravity"]
+# T3 Code runs its own Antigravity ACP server with a separate data dir.
+APP_DIRS += sorted(Path.home().glob(".t3/userdata/providers/antigravity/*/antigravity-acp"))
 
 CACHE_DIR = Path(os.environ.get("XDG_CACHE_HOME") or Path.home() / ".cache") / "omarchy" / "agents"
 LIMITS_CACHE = CACHE_DIR / "antigravity-limits.json"
@@ -124,6 +126,100 @@ def read_summaries(path: Path) -> list[dict[str, Any]]:
     }
     for row in rows
   ]
+
+
+def proto_varint(data: bytes, pos: int) -> tuple[int, int]:
+  result = shift = 0
+  while True:
+    byte = data[pos]
+    pos += 1
+    result |= (byte & 0x7F) << shift
+    shift += 7
+    if byte < 0x80:
+      return result, pos
+
+
+def proto_fields(data: bytes) -> list[tuple[int, Any]]:
+  """Top-level (field, value) pairs of a protobuf message, without a schema."""
+  fields = []
+  pos = 0
+  while pos < len(data):
+    key, pos = proto_varint(data, pos)
+    number, wire = key >> 3, key & 7
+    if wire == 0:
+      value, pos = proto_varint(data, pos)
+    elif wire == 2:
+      size, pos = proto_varint(data, pos)
+      value = data[pos:pos + size]
+      pos += size
+    elif wire == 1:
+      value, pos = data[pos:pos + 8], pos + 8
+    elif wire == 5:
+      value, pos = data[pos:pos + 4], pos + 4
+    else:
+      raise ValueError(f"unsupported wire type {wire}")
+    fields.append((number, value))
+  return fields
+
+
+def proto_field(data: bytes, number: int) -> Any:
+  for field, value in proto_fields(data):
+    if field == number:
+      return value
+  return None
+
+
+def read_generations(path: Path) -> list[dict[str, Any]]:
+  """One entry per model call in a conversation's gen_metadata table.
+
+  Each row holds the call's usage at field 1.4: 2 = input, 3 = output
+  (thinking included), 5 = cache read. Field 1.19 is the model id, and the
+  `last_step_index` label points at the step whose metadata holds the time.
+  """
+  try:
+    db = sqlite3.connect(f"file:{path}?mode=ro", uri=True, timeout=2)
+    try:
+      rows = db.execute("select data from gen_metadata").fetchall()
+      step_times = {}
+      for idx, metadata in db.execute("select idx, metadata from steps"):
+        stamp = proto_field(metadata or b"", 1)
+        seconds = proto_field(stamp, 1) if isinstance(stamp, bytes) else None
+        if seconds:
+          step_times[idx] = seconds
+    finally:
+      db.close()
+  except (sqlite3.Error, ValueError, IndexError):
+    return []
+
+  fallback = local_date(path.stat().st_mtime * 1000)
+  generations = []
+  for (data,) in rows:
+    try:
+      message = proto_field(data or b"", 1)
+      usage = proto_field(message, 4) if isinstance(message, bytes) else None
+      if not isinstance(usage, bytes):
+        continue
+      counts = {field: value for field, value in proto_fields(usage) if isinstance(value, int)}
+      model = "unknown"
+      step = None
+      for field, value in proto_fields(message):
+        if field == 19 and isinstance(value, bytes):
+          model = value.decode("utf-8", "replace") or model
+        elif field == 20 and isinstance(value, bytes):
+          label = dict(proto_fields(value))
+          if label.get(1) == b"last_step_index":
+            step = int(label.get(2) or b"-1")
+    except (ValueError, IndexError):
+      continue
+    seconds = step_times.get(step)
+    generations.append({
+      "date": local_date(seconds * 1000) if seconds else fallback,
+      "model": model,
+      "inputTokens": counts.get(2, 0),
+      "outputTokens": counts.get(3, 0),
+      "cacheReadInputTokens": counts.get(5, 0),
+    })
+  return generations
 
 
 def pool_name(raw: str) -> str:
@@ -256,7 +352,11 @@ def build_record(force: bool) -> dict[str, Any]:
   conversations: set[str] = set()
   total_prompts = 0
   total_steps = 0
+  tokens_by_day: dict[str, int] = {}
+  today_by_model: dict[str, int] = {}
+  model_usage: dict[str, dict[str, int]] = {}
   found = False
+  today_key = today.isoformat()
 
   for app_dir in APP_DIRS:
     if not app_dir.is_dir():
@@ -280,8 +380,22 @@ def build_record(force: bool) -> dict[str, Any]:
         if summary["date"]:
           sessions_by_day.setdefault(summary["date"], set()).add(summary["conversationId"])
 
+    for path in sorted((app_dir / "conversations").glob("*.db")):
+      for gen in read_generations(path):
+        total = gen["inputTokens"] + gen["outputTokens"] + gen["cacheReadInputTokens"]
+        if total == 0:
+          continue
+        tokens_by_day[gen["date"]] = tokens_by_day.get(gen["date"], 0) + total
+        if gen["date"] == today_key:
+          today_by_model[gen["model"]] = today_by_model.get(gen["model"], 0) + total
+        bucket = model_usage.setdefault(gen["model"], {
+          "inputTokens": 0, "outputTokens": 0,
+          "cacheReadInputTokens": 0, "cacheCreationInputTokens": 0,
+        })
+        for key in ("inputTokens", "outputTokens", "cacheReadInputTokens"):
+          bucket[key] += gen[key]
+
   active_dates = sorted(set(prompts_by_day) | set(sessions_by_day))
-  today_key = today.isoformat()
 
   return {
     "schemaVersion": 1,
@@ -291,9 +405,7 @@ def build_record(force: bool) -> dict[str, Any]:
     "ready": found,
     "hasLocalStats": found,
     "hasPromptStats": True,
-    # Antigravity stores no token counts we can read, so the daily chart
-    # counts prompts and the panel labels it that way.
-    "dayUnit": "prompts",
+    "dayUnit": "tokens",
     "tierLabel": current_model() or "Google",
     "usageStatusText": "" if found else "Antigravity not found",
     "authHelpText": "" if found else "Install Antigravity or run `agy` once to start collecting usage.",
@@ -303,15 +415,15 @@ def build_record(force: bool) -> dict[str, Any]:
     "retryAdvised": found and not reached,
     "todayPrompts": prompts_by_day.get(today_key, 0),
     "todaySessions": len(sessions_by_day.get(today_key, ())),
-    "todayTotalTokens": 0,
-    "todayTokensByModel": {},
-    "recentDays": [{"date": day, "messageCount": prompts_by_day.get(day, 0)} for day in recent],
+    "todayTotalTokens": tokens_by_day.get(today_key, 0),
+    "todayTokensByModel": today_by_model,
+    "recentDays": [{"date": day, "messageCount": tokens_by_day.get(day, 0)} for day in recent],
     "totalPrompts": total_prompts,
     "totalSessions": len(conversations),
     "totalSteps": total_steps,
     "activeDays": len(active_dates),
     "activeDates": active_dates,
-    "modelUsage": {},
+    "modelUsage": model_usage,
   }
 
 
