@@ -104,6 +104,12 @@ o.bind(
 )
 
 o.bind(
+    "SUPER + R",
+    "GPT",
+    "omarchy-launch-webapp 'https://chatgpt.com'"
+)
+
+o.bind(
     "SUPER + A",
     "Claude",
     "omarchy-launch-webapp 'https://claude.ai/new'"
@@ -127,11 +133,8 @@ o.bind(
     "omarchy-launch-webapp 'https://app.hey.com'"
 )
 
-o.bind(
-    "SUPER + T",
-    "Gpt",
-    "omarchy-launch-webapp 'https://chatgpt.com'"
-)
+hl.unbind("SUPER + T")
+o.bind("SUPER + T", "T3 Code", { launch = "t3code-nightly" })
 
 o.bind(
     "SUPER + Z",
@@ -151,4 +154,10 @@ o.bind(
     "omarchy-launch-or-focus-webapp WhatsApp 'https://web.whatsapp.com/'"
 )
 
+-- >>> nudge keybinds >>>
+hl.bind("SUPER + ALT + Y", hl.dsp.exec_cmd("/home/zakarch/.local/bin/nudge allow"), { description = "Allow agent permission request" })
+hl.bind("SUPER + ALT + N", hl.dsp.exec_cmd("/home/zakarch/.local/bin/nudge deny"), { description = "Deny agent permission request" })
+hl.bind("SUPER + ALT + O", hl.dsp.exec_cmd("/home/zakarch/.local/bin/nudge open"), { description = "Open agent permission request" })
+-- <<< nudge keybinds <<<
 
+hl.bind("CTRL + SHIFT + code:11", hl.dsp.global("com.t3tools.T3Code:capture-window"))

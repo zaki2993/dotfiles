@@ -9,7 +9,7 @@ touch ~/.local/bin/env
 # 2. Delete defaults to prevent Stow conflicts
 echo "Cleaning up default configurations..."
 rm -rf ~/.config/nvim ~/.local/share/nvim ~/.local/state/nvim ~/.cache/nvim
-rm -rf ~/.config/herdr ~/.config/hypr/bindings.lua
+rm -rf ~/.config/herdr ~/.config/hypr/bindings.lua ~/.config/hypr/hyprland.lua
 rm -f ~/.zshrc
 
 # 3. Create shortcuts using Stow
